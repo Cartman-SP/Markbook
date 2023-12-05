@@ -1,0 +1,33 @@
+body {
+    background-color: #F4F4F4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.input-container{
+    text-align: center;
+}
+
+h1{
+    font-family: 'Montserrat';
+    font-size: 3vw;
+}
+
+input {
+    font-family: 'Montserrat';
+    padding: 5px 20px 5px 20px;
+    width: 10vw;
+    height: 5vh;
+    font-size: 2vw;
+    border-radius: 20px;
+    border: none;
+    transition: all .5s ease;
+}
+
+input:hover {
+    filter: drop-shadow(0 0 10px #7A4BFF);
+}
