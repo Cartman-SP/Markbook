@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/schedule.css' %}" />
+    <meta charset="UTF-8" />
+    <title>Schedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="content">
+      <div class="header">
+        <h1>Расписание</h1>
+        <div class="user">
+          <h3>{{username}}</h3>
+          <a href="#">
+            <img
+              id="leave"
+              src="https://img.icons8.com/ios-glyphs/30/FF2B2B/door-opened.png"
+              alt="door"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="calendar">
+        <div class="day" id="week">
+          <h4>Декабрь</h4>
+        </div>
+        <div class="day">
+          <p>Пн</p>
+          <h4>21</h4>
+        </div>
+        <div class="day" id="active-day">
+          <p>Вт</p>
+          <h4>22</h4>
+        </div>
+        <div class="day">
+          <p>Ср</p>
+          <h4>23</h4>
+        </div>
+        <div class="day">
+          <p>Чт</p>
+          <h4>24</h4>
+        </div>
+        <div class="day">
+          <p>Пт</p>
+          <h4>25</h4>
+        </div>
+        <div class="day">
+          <p>Сб</p>
+          <h4>26</h4>
+        </div>
+        <div class="day">
+          <p>Вс</p>
+          <h4>27</h4>
+        </div>
+      </div>
+      <div class="lessons-content">
+        <div class="lesson">
+          <div class="naming">
+            <p>8.30 - 10.10</p>
+            <h4>Мат. Анализ</h4>
+          </div>
+          <div class="arrow-button"></div>
+        </div>
+        <div class="lesson">
+          <div class="naming">
+            <p>10.20 - 12.00</p>
+            <h4>ОРГ</h4>
+          </div>
+          <div class="arrow-button"></div>
+        </div>
+        <div class="lesson">
+          <div class="naming">
+            <p>12.20 - 14.00</p>
+            <h4>Программирование</h4>
+          </div>
+          <div class="arrow-button"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
