@@ -50,3 +50,6 @@ def get_table(request):
         context[str(i+1)]=sub
     print(context)
     return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
+
+def add_page(request):
+    return render(request,"AddTimetable.html")
