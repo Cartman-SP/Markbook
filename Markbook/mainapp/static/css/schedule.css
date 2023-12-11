@@ -1,280 +1,295 @@
-body{
-    background-color: #F4F4F4;
+body {
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+.content {
+  margin: 7vw 20vw 7vw 20vw;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: GREEN; */
+  margin-bottom: 20px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+#leave {
+  width: 1.5vw;
+}
+
+p {
+  font-family: "Montserrat";
+  font-size: 0.8vw;
+  margin: 0;
+}
+
+h4 {
+  font-family: "Montserrat";
+  font-size: 1vw;
+  margin: 0;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: "Montserrat";
+  font-size: 2vw;
+  margin: 0;
+}
+
+h3 {
+  font-family: "Montserrat";
+  font-size: 1vw;
+  margin: 0;
+}
+
+h5 {
+  font-family: "Montserrat";
+  font-size: 0.7vw;
+  margin: 0;
+  font-weight: 100;
+}
+
+.calendar {
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#week h4 {
+  font-weight: 200;
+  color: gray;
+  margin-left: 0px;
+}
+
+#week:hover {
+  font-weight: 200;
+  color: gray;
+  filter: drop-shadow(0 10px 5px rgba(80, 60, 233, 0.153));
+}
+
+.days-row {
+  justify-content: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  background-color: white;
+  padding: 1vh 2vw 1vh 2vw;
+  border-radius: 0.7vw;
+  transition: 0.2s ease;
+}
+
+.day h4 {
+  margin-left: 5px;
+}
+
+.day:hover {
+  transform: translateY(-3px);
+  cursor: pointer;
+  filter: drop-shadow(0 10px 5px rgb(231, 231, 231));
+}
+
+.active-day {
+  background-color: rgb(81, 60, 233);
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding: 1vh 2vw 1vh 2vw;
+  border-radius: 0.7vw;
+  transition: 0.2s ease;
+}
+
+.active-day h4 {
+  margin-left: 5px;
+}
+
+.active-day:hover {
+  transform: translateY(-3px);
+  cursor: pointer;
+  filter: drop-shadow(0 10px 5px rgb(231, 231, 231));
+}
+
+.active-day p {
+  color: white;
+}
+
+.lessons-content {
+  margin-top: 5vh;
+}
+
+.lesson {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 1vh 2vw 1vh 2vw;
+  border-radius: 0.8vw;
+  margin-bottom: 1vw;
+  transition: all 0.1s ease;
+}
+
+.naming {
+  text-align: left;
+}
+
+.lesson:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0px 5px rgb(231, 231, 231));
+}
+
+@media (max-width: 1000px) {
+  body {
+    background-color: #f4f4f4;
     margin: 0;
-}
+  }
 
-.content{
-    margin: 7vw 20vw 7vw 20vw;
-}
+  .content {
+    margin: 5vw 5vw 5vw 5vw;
+  }
 
-.header{
+  .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     /* background-color: GREEN; */
-    margin-bottom: 20px;
-}
+    margin-bottom: 5vh;
+  }
 
-.user{
+  .user {
     display: flex;
     align-items: center;
-}
+  }
 
-#leave{
-    width: 1.5vw;
-}
+  #leave {
+    width: 6vw;
+  }
 
-p{
-    font-family: 'Montserrat';
-    font-size: .8vw;
+  p {
+    font-family: "Montserrat";
+    font-size: 3vw;
     margin: 0;
-}
+  }
 
-h4{
-    font-family: 'Montserrat';
-    font-size: 1vw;
+  h4 {
+    font-family: "Montserrat";
+    font-size: 5vw;
     margin: 0;
     font-weight: bold;
-}
+  }
 
-h1{
-    font-family: 'Montserrat';
-    font-size: 2vw;
+  h1 {
+    font-family: "Montserrat";
+    font-size: 6vw;
     margin: 0;
-}
+  }
 
-h3{
-    font-family: 'Montserrat';
-    font-size: 1vw;
+  h3 {
+    font-family: "Montserrat";
+    font-size: 4vw;
     margin: 0;
-}
+  }
 
-h5{
-    font-family: 'Montserrat';
-    font-size: .7vw;
+  h5 {
+    font-family: "Montserrat";
+    font-size: 6vw;
     margin: 0;
     font-weight: 100;
-}
+  }
 
-.calendar{
-    font-family: 'Montserrat';
+  .calendar {
+    font-family: "Montserrat";
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+  }
 
+  #week {
+    display: none;
+  }
 
-#week h4{
+  #week h4 {
     font-weight: 200;
     color: gray;
     margin-left: 0px;
-}
+  }
 
-#week:hover{
+  #week:hover {
     font-weight: 200;
     color: gray;
     filter: drop-shadow(0 10px 5px rgba(80, 60, 233, 0.153));
-}
+  }
 
-.days-row{
+  .days-row {
     justify-content: center;
     vertical-align: middle;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+  }
 
-.day{
-    display: flex;
+  .day {
+    display: block;
     text-align: center;
     align-items: center;
     background-color: white;
     padding: 1vh 2vw 1vh 2vw;
-    border-radius: .7vw;
-    transition: .2s ease;
-}
+    border-radius: 3vw;
+    transition: 0.2s ease;
+  }
 
-.day h4{
+  .day h4 {
     margin-left: 5px;
-}
+  }
 
-.day:hover{
+  .day:hover {
     transform: translateY(-3px);
     cursor: pointer;
     filter: drop-shadow(0 10px 5px rgb(231, 231, 231));
-}
+  }
 
-#active-day{
+  #active-day {
     background-color: rgb(81, 60, 233);
     color: white;
-}
+  }
 
-#active-day p{
+  #active-day p {
     color: white;
-}
+  }
 
-.lessons-content{
-    margin-top: 5vh;
-}
+  .lessons-content {
+    margin-top: 3vh;
+  }
 
-.lesson{
+  .lesson {
     display: flex;
     align-items: center;
     background-color: white;
-    padding: 1vh 2vw 1vh 2vw;
-    border-radius: .8vw;
-    margin-bottom: 1vw;
-    transition: all .1s ease;
-}
+    padding: 2vh 5vw 2vh 5vw;
+    border-radius: 3vw;
+    margin-bottom: 3vw;
+    transition: all 0.1s ease;
+  }
 
-.naming{
+  .naming {
     text-align: left;
-}
+  }
 
-.lesson:hover{
+  .lesson:hover {
     cursor: pointer;
     filter: drop-shadow(0 0px 5px rgb(231, 231, 231));
-}
-
-@media (max-width: 1000px){
-    body{
-        background-color: #F4F4F4;
-        margin: 0;
-    }
-    
-    .content{
-        margin: 5vw 5vw 5vw 5vw;
-    }
-    
-    .header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        /* background-color: GREEN; */
-        margin-bottom: 5vh;
-    }
-    
-    .user{
-        display: flex;
-        align-items: center;
-    }
-    
-    #leave{
-        width: 6vw;
-    }
-    
-    p{
-        font-family: 'Montserrat';
-        font-size: 3vw;
-        margin: 0;
-    }
-    
-    h4{
-        font-family: 'Montserrat';
-        font-size: 5vw;
-        margin: 0;
-        font-weight: bold;
-    }
-    
-    h1{
-        font-family: 'Montserrat';
-        font-size: 6vw;
-        margin: 0;
-    }
-    
-    h3{
-        font-family: 'Montserrat';
-        font-size: 4vw;
-        margin: 0;
-    }
-    
-    h5{
-        font-family: 'Montserrat';
-        font-size: 6vw;
-        margin: 0;
-        font-weight: 100;
-    }
-    
-    .calendar{
-        font-family: 'Montserrat';
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    #week{
-        display: none;
-    }
-    
-    #week h4{
-        font-weight: 200;
-        color: gray;
-        margin-left: 0px;
-    }
-    
-    #week:hover{
-        font-weight: 200;
-        color: gray;
-        filter: drop-shadow(0 10px 5px rgba(80, 60, 233, 0.153));
-    }
-    
-    .days-row{
-        justify-content: center;
-        vertical-align: middle;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .day{
-        display: block;
-        text-align: center;
-        align-items: center;
-        background-color: white;
-        padding: 1vh 2vw 1vh 2vw;
-        border-radius: 3vw;
-        transition: .2s ease;
-    }
-    
-    .day h4{
-        margin-left: 5px;
-    }
-    
-    .day:hover{
-        transform: translateY(-3px);
-        cursor: pointer;
-        filter: drop-shadow(0 10px 5px rgb(231, 231, 231));
-    }
-    
-    #active-day{
-        background-color: rgb(81, 60, 233);
-        color: white;
-    }
-    
-    #active-day p{
-        color: white;
-    }
-    
-    .lessons-content{
-        margin-top: 3vh;
-    }
-    
-    .lesson{
-        display: flex;
-        align-items: center;
-        background-color: white;
-        padding: 2vh 5vw 2vh 5vw;
-        border-radius: 3vw;
-        margin-bottom: 3vw;
-        transition: all .1s ease;
-    }
-    
-    .naming{
-        text-align: left;
-    }
-    
-    .lesson:hover{
-        cursor: pointer;
-        filter: drop-shadow(0 0px 5px rgb(231, 231, 231));
-    }
+  }
 }

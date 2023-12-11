@@ -1,46 +1,45 @@
 body {
-    background-color: #F4F4F4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-
-.input-container{
-    text-align: center;
+.input-container {
+  text-align: center;
 }
 
-h1{
-    font-family: 'Montserrat';
-    font-size: 3vw;
+h1 {
+  font-family: "Montserrat";
+  font-size: 3vw;
 }
 
 input {
-    font-family: 'Montserrat';
-    padding: 1vh 1vw 1vh 1vw;
-    width: 10vw;
-    font-size: 2vw;
-    border-radius: 1vw;
-    border: none;
+  font-family: "Montserrat";
+  padding: 1vh 1vw 1vh 1vw;
+  width: 10vw;
+  font-size: 2vw;
+  border-radius: 1vw;
+  border: none;
 }
 
-#form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#submit{
-    margin-left: 1vw;
-    padding: .2vw;
-    font-family: 'Montserrat';
-    font-size: 1vw;
-    width: 2vw;
-    height: 2vw;
+#submit {
+  margin-left: 1vw;
+  padding: 0.2vw;
+  font-family: "Montserrat";
+  font-size: 1vw;
+  width: 2vw;
+  height: 2vw;
 }
 
-#submit:hover{
-    cursor: pointer;
+#submit:hover {
+  cursor: pointer;
 }
