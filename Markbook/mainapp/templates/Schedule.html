@@ -28,8 +28,8 @@
         </div>
       </div>
       <div class="calendar">
-        <div class="day" id="week">
-          <h4>Декабрь</h4>
+        <div class="day" id="week" onclick="weekchange(-7)">
+          <h4><</h4>
         </div>
         <div class="day" id="Mon" onclick="choose(this)">
           <p>Пн</p>
@@ -66,6 +66,9 @@
           <h4></h4>
           <h3 visibility: hidden>12312</h3>
         </div>
+        <div class="day" id="week" onclick="weekchange(7)">
+          <h4>></h4>
+        </div>
       </div>
       <div class="lessons-content">
         <div class="lesson">
@@ -94,7 +97,7 @@
 
     <script>
       var CSRF_TOKEN = "{{ csrf_token }}";
-      var today = new Date("2023-12-11");
+      var today = new Date();
       var week = [
         document.getElementById("Mon"),
         document.getElementById("Tue"),
@@ -106,25 +109,39 @@
       ];
 
 
-      function nextweek(){
-
+      function weekchange(i){
+          newb = document.getElementsByClassName('active-day')[0];
+          var nextWeek = new Date(today);
+          nextWeek.setDate(today.getDate() + i);
+          today = nextWeek;
+          onPageLoad();
+          oldb = document.getElementsByClassName("active-day")[0];
+          oldb.classList.remove("active-day");
+          oldb.classList.add("day");
+          newb.classList.remove("day");
+          newb.classList.add("active-day");
       }
+
       function onPageLoad() {
-        for (let i = today.getDay() + 1; i < 7; i++) {
+        var c = 1
+        for (let i = today.getDay(); i < 7; i++) {
           var h = week[i].getElementsByTagName("h4")[0];
           var nextDay = new Date(today);
-          nextDay.setDate(today.getDate() + i);
+          nextDay.setDate(today.getDate() + c);
           var p = week[i].getElementsByTagName("h3")[0];
           p.innerHTML = `${nextDay.getDate()}/${nextDay.getMonth() + 1}/${nextDay.getFullYear()}`;
           h.innerHTML = nextDay.getDate();
+          c = c+1;
         }
+        var c = 1
         for (let i = today.getDay(); i >= 0; i--) {
           var h = week[i].getElementsByTagName("h4")[0];
           var nextDay = new Date(today);
-          nextDay.setDate(today.getDate() + i);
+          nextDay.setDate(today.getDate() + c);
           var p = week[i].getElementsByTagName("h3")[0];
           p.innerHTML = `${nextDay.getDate()}.${nextDay.getMonth() + 1}.${nextDay.getFullYear()}`;
           h.innerHTML = nextDay.getDate();
+          c = c-1;
         }
 
         var week2 = [
