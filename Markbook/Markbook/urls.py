@@ -6,4 +6,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_page, name='Main'),
     path('tables/', tables, name = "tables"),
+    path('adding/', tables, name = "adding"),
 ]

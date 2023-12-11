@@ -27,3 +27,6 @@ def tables(request):
     context = {}
     context['username'] = user.firstname
     return render(request,'Schedule.html',context)
+
+def tables(request):
+    return render(request,'AddTimetable.html')

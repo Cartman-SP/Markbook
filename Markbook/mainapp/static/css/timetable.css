@@ -1,0 +1,49 @@
+body{
+    background-color: #F4F4F4;
+    margin: 0;
+}
+
+.content{
+    margin: 7vw 20vw 7vw 20vw;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: GREEN; */
+    margin-bottom: 20px;
+}
+
+p{
+    font-family: 'Montserrat';
+    font-size: .8vw;
+    margin: 0;
+}
+
+h1{
+    font-family: 'Montserrat';
+    font-size: 2vw;
+    margin: 0;
+}
+
+.table-editor{
+    margin-top: 20px;
+    text-align: left;
+}
+
+td, th{
+    border: 1px solid rgb(186, 186, 186);
+    margin: 0;
+    padding: 20px;
+}
+
+th{
+    font-family: 'Montserrat';
+    font-size: 1vw;
+    background-color: white;
+}
+
+input{
+    width: 100%;
+}
