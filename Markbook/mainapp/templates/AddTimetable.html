@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/timetable.css' %}" />
+    <meta charset="UTF-8" />
+    <title>Main</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="content">
+        <div class="header">
+          <h1>Редактирование расписания</h1>
+          <a href="#">
+            <p>Back</p>
+          </a>
+        </div>
+        <div class="table-editor">
+            <table>
+                <tr>
+                    <th>Название предмета</th>
+                    <th>Дата проведения</th>
+                    <th>Время проведения</th>
+                </tr> <!--ряд с ячейками заголовков-->
+                <tr>
+                    <td>
+                        <input type="text">
+                    </td>
+                    <td>
+                        <div class="column">
+                            <p>Начало</p>
+                            <input type="date">
+                        </div>
+                        <div class="column">
+                            <p>Окончание</p>
+                            <input type="date">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr> <!--ряд с ячейками тела таблицы-->
+            </table>
+        </div>
+    </div>
+  </body>
+</html>
