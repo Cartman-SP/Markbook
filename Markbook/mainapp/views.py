@@ -43,11 +43,15 @@ def get_table(request):
     print(r['date'],r['day'])
     arr = Lesson.objects.filter(day_of_Week = r['day'])
     for i in range(len(arr)):
-        sub = {}
-        sub['name']=arr[i].name
-        sub['time']=arr[i].time
-        context[str(i+1)]=sub
-        context[str(i+1)]=sub
+        print(arr[i].end_time)
+        if(is_date_in_range(r['date'],arr[i].start_time,arr[i].end_time)):
+            sub = {}
+            sub['name']=arr[i].name
+            sub['time']=arr[i].time
+            context[str(i+1)]=sub
+            context[str(i+1)]=sub
+        
+
     print(context)
     return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
 
