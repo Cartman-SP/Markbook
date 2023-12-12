@@ -186,7 +186,7 @@ h5 {
 
   h4 {
     font-family: "Montserrat";
-    font-size: 5vw;
+    font-size: 4vw;
     margin: 0;
     font-weight: bold;
   }
@@ -218,7 +218,8 @@ h5 {
   }
 
   #week {
-    display: none;
+    width: 1vw;
+    margin: 5px;
   }
 
   #week h4 {
@@ -249,6 +250,7 @@ h5 {
     padding: 1vh 2vw 1vh 2vw;
     border-radius: 3vw;
     transition: 0.2s ease;
+    width: 6vw;
   }
 
   .day h4 {
@@ -261,12 +263,19 @@ h5 {
     filter: drop-shadow(0 10px 5px rgb(231, 231, 231));
   }
 
-  #active-day {
+  .active-day {
+    width: 6vw;
+    display: block;
+    text-align: center;
+    align-items: center;
+    padding: 1vh 2vw 1vh 2vw;
+    border-radius: 3vw;
+    transition: 0.2s ease;
     background-color: rgb(81, 60, 233);
     color: white;
   }
 
-  #active-day p {
+  .active-day p {
     color: white;
   }
 
