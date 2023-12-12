@@ -66,7 +66,13 @@ h5 {
 #week h4 {
   font-weight: 200;
   color: gray;
-  margin-left: 0px;
+}
+
+#week{
+  text-align: center;
+  width: 2vw;
+  padding: 1vh;
+  justify-content: center;
 }
 
 #week:hover {
@@ -84,6 +90,7 @@ h5 {
 }
 
 .day {
+  width: 2vw;
   display: flex;
   text-align: center;
   align-items: center;
@@ -104,6 +111,7 @@ h5 {
 }
 
 .active-day {
+  width: 2vw;
   background-color: rgb(81, 60, 233);
   color: white;
   display: flex;
@@ -144,6 +152,11 @@ h5 {
 
 .naming {
   text-align: left;
+}
+
+.naming p{
+  color: gray;
+  margin-bottom: 5px;
 }
 
 .lesson:hover {
