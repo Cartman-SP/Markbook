@@ -55,6 +55,7 @@ def check_change(request):
     check.ison = data['ison']
     check.save()
     return HttpResponse()
+
 def get_table(request):
     r = json.loads(request.body)
     context = {}
@@ -66,6 +67,12 @@ def get_table(request):
             sub['name']=arr[i].name
             sub['time']=arr[i].time
             sub['id']  =arr[i].id
+            if(len(checks)!=0):
+                sub['check'] = checks[0].ison
+                print(sub['check'])
+            else:
+                sub['check'] = '-1'
+            print(sub)
             context[str(i+1)]=sub
             context[str(i+1)]=sub
     return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")

@@ -168,6 +168,12 @@
                                     <div class="arrow-button"></div>
                                   </div>
                                 `;
+                console.log(context[i].check)
+                if(context[i].check=='1'){
+                  div.firstElementChild.style.backgroundColor = 'rgb(163, 246, 182)';
+                }else if(context[i].check=='0'){
+                  div.firstElementChild.style.backgroundColor = 'rgb(251, 202, 202)';
+                }
                 document.getElementsByClassName("lessons-content")[0].appendChild(div);
               }
           }
@@ -202,6 +208,18 @@ function create_check(clicked, isons) {
     xmlhttp.send(JSON.stringify({ lesson_id: id, student_id: sid, date: data, ison: isons }));
 }
 
+function check_validate() {
+    var xmlhttp = new XMLHttpRequest();
+    var theUrl = "/checking_validate/";
+    xmlhttp.open("POST", theUrl, true);
+    xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+    var id = clicked.getElementsByTagName('h1')[0].innerHTML;
+    var data = document.getElementsByClassName('active-day')[0].getElementsByTagName('h3')[0].innerHTML;
+    console.log(data);
+    var sid = "{{student_id}}";
+    xmlhttp.send(JSON.stringify({ student_id: sid, date: data }));
+}
+
 function change_check(clicked, isons) {
     var xmlhttp = new XMLHttpRequest();
     var theUrl = "/checking_change/";
@@ -217,13 +235,13 @@ function change_check(clicked, isons) {
       function checkable(clicked){
         console.log('123'+clicked.style.backgroundColor)
         if(clicked.style.backgroundColor==''){
-          clicked.style.backgroundColor = 'green';
+          clicked.style.backgroundColor = 'rgb(163, 246, 182)';
           create_check(clicked,'1');
-        }else if(clicked.style.backgroundColor=='green'){
-          clicked.style.backgroundColor = 'red';
+        }else if(clicked.style.backgroundColor=='rgb(163, 246, 182)'){
+          clicked.style.backgroundColor = 'rgb(251, 202, 202)';
           change_check(clicked,'0');
         }else{
-          clicked.style.backgroundColor = 'green';
+          clicked.style.backgroundColor = 'rgb(163, 246, 182)';
           change_check(clicked,'1');
         }
         

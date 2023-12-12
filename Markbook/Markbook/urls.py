@@ -10,6 +10,4 @@ urlpatterns = [
     path('adding/', add_page, name="add_page"),
     path('checking/',create_check,name='check_create'),
     path('checking_change/',check_change,name='check_change'),
-
-    
 ]
