@@ -7,5 +7,9 @@ urlpatterns = [
     path('', main_page, name='Main'),
     path('tables/', tables, name = "tables"),
     path('tables/get_table/',get_table,name="get_table"),
-    path('adding/', add_page, name="add_page")
+    path('adding/', add_page, name="add_page"),
+    path('checking/',create_check,name='check_create'),
+    path('checking_change/',check_change,name='check_change'),
+
+    
 ]

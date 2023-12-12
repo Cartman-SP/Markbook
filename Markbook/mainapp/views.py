@@ -28,6 +28,7 @@ def tables(request):
     user = Student.objects.get(id = request.session['student_id'])
     context = {}
     context['username'] = user.firstname
+    context['student_id'] = user.id
     return render(request,'Schedule.html',context)
 
 def is_date_in_range(date_to_check, start_date, end_date):
@@ -36,23 +37,37 @@ def is_date_in_range(date_to_check, start_date, end_date):
     end_date = datetime.strptime(end_date, '%d.%m.%Y')
     return start_date <= date_to_check <= end_date
 
+def create_check(request):
+    data = json.loads(request.body.decode('utf-8'))
+    student = Student.objects.get(id = data['student_id'])
+    lesson = Lesson.objects.get(id = int(data['lesson_id']))
+    print(lesson.id)
+    check = Check(student=student, lesson=lesson, date=data['date'], ison=data['ison'])
+    check.save()
+    return HttpResponse()
 
+def check_change(request):
+    data = json.loads(request.body.decode('utf-8'))
+    student = Student.objects.get(id = data['student_id'])
+    lesson = Lesson.objects.get(id = int(data['lesson_id']))
+    print(lesson.id)
+    check = Check.objects.get(student=student, lesson=lesson, date=data['date'])
+    check.ison = data['ison']
+    check.save()
+    return HttpResponse()
 def get_table(request):
     r = json.loads(request.body)
     context = {}
-    print(r['date'],r['day'])
     arr = Lesson.objects.filter(day_of_Week = r['day'])
     for i in range(len(arr)):
-        print(arr[i].end_time)
         if(is_date_in_range(r['date'],arr[i].start_time,arr[i].end_time)):
             sub = {}
+            checks = Check.objects.filter(lesson = arr[i], date = r['date'])
             sub['name']=arr[i].name
             sub['time']=arr[i].time
+            sub['id']  =arr[i].id
             context[str(i+1)]=sub
             context[str(i+1)]=sub
-        
-
-    print(context)
     return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
 
 def add_page(request):
