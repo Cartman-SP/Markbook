@@ -70,25 +70,13 @@
           <h4>></h4>
         </div>
       </div>
+
+      
+      <!-- sample table -->
       <div class="lessons-content">
         <div class="lesson">
           <div class="naming">
-            <p>8.30 - 10.10</p>
-            <h4>Мат. Анализ</h4>
-          </div>
-          <div class="arrow-button"></div>
-        </div>
-        <div class="lesson">
-          <div class="naming">
-            <p>10.20 - 12.00</p>
-            <h4>ОРГ</h4>
-          </div>
-          <div class="arrow-button"></div>
-        </div>
-        <div class="lesson">
-          <div class="naming">
-            <p>12.20 - 14.00</p>
-            <h4>Программирование</h4>
+            <h4>Загрузка расписания...</h4>
           </div>
           <div class="arrow-button"></div>
         </div>
@@ -129,7 +117,7 @@
           var nextDay = new Date(today);
           nextDay.setDate(today.getDate() + c);
           var p = week[i].getElementsByTagName("h3")[0];
-          p.innerHTML = `${nextDay.getDate()}/${nextDay.getMonth() + 1}/${nextDay.getFullYear()}`;
+          p.innerHTML = `${nextDay.getDate()}.${nextDay.getMonth() + 1}.${nextDay.getFullYear()}`;
           h.innerHTML = nextDay.getDate();
           c = c+1;
         }
@@ -197,7 +185,12 @@
         newb.classList.remove("day");
         newb.classList.add("active-day");
         gettable(newb.getElementsByTagName("h3")[0].innerHTML,newb.getElementsByTagName("p")[0].innerHTML);
-        
+        var a = newb.getElementsByTagName("h3")[0].innerHTML;
+        a = a.split('.');
+        var data = a[2]+"-"+a[1]+'-'+a[0];
+        console.log(data);
+        today  = new Date(data);
+        console.log(today.getDay());
       }
     </script>
   </body>
