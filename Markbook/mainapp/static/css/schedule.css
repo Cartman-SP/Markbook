@@ -78,7 +78,7 @@ h5 {
 #week:hover {
   font-weight: 200;
   color: gray;
-  filter: drop-shadow(0 10px 5px rgba(80, 60, 233, 0.153));
+  filter: drop-shadow(0 10px 5px #7b4bff30);
 }
 
 .days-row {
@@ -112,7 +112,7 @@ h5 {
 
 .active-day {
   width: 2vw;
-  background-color: rgb(81, 60, 233);
+  background-color: #7A4BFF;
   color: white;
   display: flex;
   text-align: center;
@@ -244,7 +244,7 @@ h5 {
   #week:hover {
     font-weight: 200;
     color: gray;
-    filter: drop-shadow(0 10px 5px rgba(80, 60, 233, 0.153));
+    filter: drop-shadow(0 10px 5px #7b4bff30);
   }
 
   .days-row {
@@ -284,7 +284,7 @@ h5 {
     padding: 1vh 2vw 1vh 2vw;
     border-radius: 3vw;
     transition: 0.2s ease;
-    background-color: rgb(81, 60, 233);
+    background-color: #7A4BFF;
     color: white;
   }
 

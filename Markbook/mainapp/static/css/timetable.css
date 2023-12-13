@@ -3,6 +3,22 @@ body{
     margin: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
+a p{
+    font-weight: 900;
+    color: #7A4BFF;
+    transition: all .2s ease;
+}
+
+
+a p:hover{
+    font-weight: 900;
+    color: #a585ff;
+}
+
 .content{
     margin: 7vw 20vw 7vw 20vw;
 }
@@ -27,15 +43,23 @@ h1{
     margin: 0;
 }
 
+table{
+    width: 100%;
+    border-spacing: 1px;
+    margin-bottom: 1vh;
+}
+
 .table-editor{
     margin-top: 20px;
     text-align: left;
+    margin-bottom: 5vh;
 }
 
 td, th{
     border: 1px solid rgb(186, 186, 186);
     margin: 0;
     padding: 20px;
+    
 }
 
 th{
@@ -44,6 +68,69 @@ th{
     background-color: white;
 }
 
+#add{
+    border: none;
+    border-radius: 2vw;
+    padding: .4vw;
+    background-color: rgb(211, 211, 211);
+    font-family: "Montserrat";
+    font-size: .7vw;
+    transition: all .2s ease;
+}
+
+#add:hover{
+    background-color: rgb(163, 246, 182);
+    cursor: pointer;
+}
+
+
+#clean{
+    margin-left: .5vw;
+    border: none;
+    border-radius: 2vw;
+    padding: .4vw;
+    background-color: rgb(211, 211, 211);
+    font-family: "Montserrat";
+    font-size: .7vw;
+    transition: all .2s ease;
+}
+
+#clean:hover{
+    background-color: rgb(251, 202, 202);
+    cursor: pointer;
+}
+
+
 input{
     width: 100%;
+}
+
+select{
+    width: 100%;
+}
+  
+.lesson {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 1vh 2vw 1vh 2vw;
+    border-radius: 0.8vw;
+    margin-bottom: 1vw;
+    transition: all 0.1s ease;
+}
+  
+.naming {
+    text-align: left;
+  }
+
+.naming p{
+    color: gray;
+    margin-bottom: 5px;
+}
+
+h4 {
+    font-family: "Montserrat";
+    font-size: 1vw;
+    margin: 0;
+    font-weight: bold;
 }
