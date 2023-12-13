@@ -32,7 +32,7 @@
                 </tr> <!--ряд с ячейками заголовков-->
                 <tr>
                     <td>
-                        <input type="text">
+                        <input type="text" id="name_field">
                     </td>
                     <td>
                         <div class="column">
@@ -77,7 +77,7 @@
                     </td>
                 </tr> <!--ряд с ячейками тела таблицы-->
             </table>
-            <button id="add">
+            <button id="add" onclick="add()">
               Подтвердить и Добавить
             </button>
             <button id="clean">
@@ -88,14 +88,52 @@
           <h1>Существующие предметы</h1>
         </div>
         <div class="lessons-content">
-          <div class="lesson">
-            <div class="naming">
-              <p>Время</p>
-              <h4>Загрузка предметов...</h4>
+          {% for o in lessons %}
+            <div class="lesson" onclick="checkable(this)">
+              <div class="naming">
+                <p>{{o.time}}</p>
+                <h4>{{o.name}}</h4>
+              </div>
+              <div class="arrow-button"></div>
             </div>
-            <div class="arrow-button"></div>
+           {% endfor %}
           </div>
         </div>
     </div>
+
+    <script>
+      function add(){
+        name = document.getElementById("name_field").value;
+        start = document.getElementById("start-days").value;
+        end = document.getElementById("end-days").value;
+        day = document.getElementById("day-select").value;
+        time = document.getElementById("time-select").value;
+        create_lesson(name,start,end,day,time);
+        online_lesson(name,start,end,day,time);
+      }
+
+      function create_lesson(name,start,end,day,time){
+          CSRF_TOKEN = "{{csrf_token}}"
+          var xmlhttp = new XMLHttpRequest();
+          var theUrl = "/lessoning/";
+          xmlhttp.open("POST", theUrl, true);
+          xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+          xmlhttp.send(JSON.stringify({ name: name, start: start, end: end, day: day,time: time }));
+      }
+
+      function online_lesson(name,start,end,day,time){
+                var div = document.createElement("div");
+                div.innerHTML = `
+                                  <div class="lesson" onclick="checkable(this)">
+                                    <div class="naming">
+                                      <p>${time}</p>
+                                      <h4>${name}</h4>
+                                    </div>
+                                    <div class="arrow-button"></div>
+                                  </div>
+                                `;
+                document.getElementsByClassName("lessons-content")[0].appendChild(div);
+      }
+    </script>
   </body>
 </html>

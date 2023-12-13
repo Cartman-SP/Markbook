@@ -86,4 +86,14 @@ def get_table(request):
     return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
 
 def add_page(request):
-    return render(request,"AddTimetable.html")
+    context = {}
+    lessons = Lesson.objects.filter()
+    context['lessons'] = lessons
+    return render(request,"AddTimetable.html",context)
+
+def create_lesson(request):
+    data = json.loads(request.body.decode('utf-8'))
+    lesson = Lesson(name = data['name'], start_time = data['start'], end_time =['end'], day_of_Week = data['day'],time=data['time'], group = Group.objects.get())
+    print(lesson)
+    lesson.save()
+    return HttpResponse()
