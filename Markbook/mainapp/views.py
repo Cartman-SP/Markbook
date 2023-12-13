@@ -10,28 +10,33 @@ def main_page(request):
     context = {}
     form = StudentLoginForm
     model = Student
-    if(request.session["student_id"]!=None):
-        if request.method == "POST":
-            if request.session.test_cookie_worked():
-                field = form(request.POST)
-                if field.is_valid():
-                    user = Student.objects.get(code = field.data['code'])
-                    request.session["student_id"] = user.id
-                    return redirect('/tables')
-        else:
-            field = form()
-            context['field'] = field
-        request.session.set_test_cookie()
-        return render(request, 'mainpage.html',context)
+    if request.method == "POST":
+        if request.session.test_cookie_worked():
+            field = form(request.POST)
+            if field.is_valid():
+                user = Student.objects.get(code = field.data['code'])
+                request.session["student_id"] = user.id
+                return redirect('/tables')
     else:
-        return redirect("Main")
+        field = form()
+        context['field'] = field
+    request.session.set_test_cookie()
+    return render(request, 'mainpage.html',context)
+
+
+def leave(request):
+    request.session["student_id"]=None
+    return redirect(main_page)
 
 def tables(request):
-    user = Student.objects.get(id = request.session['student_id'])
-    context = {}
-    context['username'] = user.firstname
-    context['student_id'] = user.id
-    return render(request,'Schedule.html',context)
+    if(request.session["student_id"]!=None):
+        user = Student.objects.get(id = request.session['student_id'])
+        context = {}
+        context['username'] = user.firstname
+        context['student_id'] = user.id
+        return render(request,'Schedule.html',context)
+    else:
+        return redirect(main_page)
 
 def is_date_in_range(date_to_check, start_date, end_date):
     date_to_check = datetime.strptime(date_to_check, '%d.%m.%Y')
@@ -61,11 +66,12 @@ def check_change(request):
 def get_table(request):
     r = json.loads(request.body)
     context = {}
+    student = Student.objects.get(id = int(request.session['student_id']))
     arr = Lesson.objects.filter(day_of_Week = r['day'])
     for i in range(len(arr)):
         if(is_date_in_range(r['date'],arr[i].start_time,arr[i].end_time)):
             sub = {}
-            checks = Check.objects.filter(lesson = arr[i], date = r['date'])
+            checks = Check.objects.filter(lesson = arr[i], date = r['date'],student = student)
             sub['name']=arr[i].name
             sub['time']=arr[i].time
             sub['id']  =arr[i].id
