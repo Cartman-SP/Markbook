@@ -4,9 +4,10 @@
   <head>
     <link rel="stylesheet" href="{% static 'css/timetable.css' %}" />
     <meta charset="UTF-8" />
-    <title>Main</title>
+    <title>Markbook | Lessons adding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/basic-ui-color/37/Tick-1024.png">
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
       rel="stylesheet"
@@ -15,17 +16,19 @@
   <body>
     <div class="content">
         <div class="header">
-          <h1>Редактирование расписания</h1>
+          <h1>Добавление нового предмета</h1>
           <a href="#">
             <p>Back</p>
           </a>
         </div>
         <div class="table-editor">
-            <table>
+            <table >
                 <tr>
                     <th>Название предмета</th>
-                    <th>Дата проведения</th>
+                    <th>Даты проведения в семестре</th>
+                    <th>День проведения</th>
                     <th>Время проведения</th>
+                    <th>Тип пары</th>
                 </tr> <!--ряд с ячейками заголовков-->
                 <tr>
                     <td>
@@ -34,16 +37,64 @@
                     <td>
                         <div class="column">
                             <p>Начало</p>
-                            <input type="date">
+                            <input type="date" id="start-days">
                         </div>
                         <div class="column">
                             <p>Окончание</p>
-                            <input type="date">
+                            <input type="date" id="end-days">
                         </div>
                     </td>
-                    <td><input type="text"></td>
+                    <td>
+                      <select id="day-select">
+                        <option value="">Day</option>
+                        <option value="Пн">Пн</option>
+                        <option value="Вт">Вт</option>
+                        <option value="Ср">Ср</option>
+                        <option value="Чт">Чт</option>
+                        <option value="Пт">Пт</option>
+                        <option value="Сб">Сб</option>
+                        <option value="Вс">Вс</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select id="time-select">
+                        <option value="">Time</option>
+                        <option value="8:30-10:10">8:30-10:10</option>
+                        <option value="10:20-12:00">10:20-12:00</option>
+                        <option value="12:20-14:00">12:20-14:00</option>
+                        <option value="14:10-15:50">14:10-15:50</option>
+                        <option value="16:00-17:40">16:00-17:40</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select id="type-select">
+                        <option value="">type</option>
+                        <option value="Семинар">Семинар</option>
+                        <option value="Лекция">Лекция</option>
+                        <option value="Лаба">Лаба</option>
+                        <option value="Другое">Другое</option>
+                      </select>
+                    </td>
                 </tr> <!--ряд с ячейками тела таблицы-->
             </table>
+            <button id="add">
+              Подтвердить и Добавить
+            </button>
+            <button id="clean">
+              Очистить форму
+            </button>
+        </div>
+        <div class="header">
+          <h1>Существующие предметы</h1>
+        </div>
+        <div class="lessons-content">
+          <div class="lesson">
+            <div class="naming">
+              <p>Время</p>
+              <h4>Загрузка предметов...</h4>
+            </div>
+            <div class="arrow-button"></div>
+          </div>
         </div>
     </div>
   </body>
