@@ -38,6 +38,13 @@ def tables(request):
     else:
         return redirect(main_page)
 
+
+
+def adminschedule(request):
+    return render(request,'MashaClient.html')
+
+
+
 def is_date_in_range(date_to_check, start_date, end_date):
     date_to_check = datetime.strptime(date_to_check, '%d.%m.%Y')
     start_date = datetime.strptime(start_date, '%d.%m.%Y')
