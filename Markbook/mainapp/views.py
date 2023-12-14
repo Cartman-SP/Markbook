@@ -58,7 +58,6 @@ def create_check(request):
     data = json.loads(request.body.decode('utf-8'))
     student = Student.objects.get(id = data['student_id'])
     lesson = Lesson.objects.get(id = int(data['lesson_id']))
-    print(lesson.id)
     check = Check(student=student, lesson=lesson, date=data['date'], ison=data['ison'])
     check.save()
     return HttpResponse()
@@ -67,7 +66,6 @@ def check_change(request):
     data = json.loads(request.body.decode('utf-8'))
     student = Student.objects.get(id = data['student_id'])
     lesson = Lesson.objects.get(id = int(data['lesson_id']))
-    print(lesson.id)
     check = Check.objects.get(student=student, lesson=lesson, date=data['date'])
     check.ison = data['ison']
     check.save()
@@ -87,10 +85,8 @@ def get_table(request):
             sub['id']  =arr[i].id
             if(len(checks)!=0):
                 sub['check'] = checks[0].ison
-                print(sub['check'])
             else:
                 sub['check'] = '-1'
-            print(sub)
             context[str(i+1)]=sub
             context[str(i+1)]=sub
     return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
@@ -104,12 +100,52 @@ def add_page(request):
 def create_lesson(request):
     data = json.loads(request.body.decode('utf-8'))
     lesson = Lesson(name = data['name'], start_time = data['start'], end_time =['end'], day_of_Week = data['day'],time=data['time'], group = Group.objects.get())
-    print(lesson)
     lesson.save()
     return HttpResponse()
 
 def delete_lesson(request):
     data = json.loads(request.body.decode('utf-8'))
-    print(data['id'])
     Lesson.objects.get(id=int(data['id'])).delete()
     return HttpResponse()
+
+def get_table(request):
+    r = json.loads(request.body)
+    context = {}
+    student = Student.objects.get(id = int(request.session['student_id']))
+    arr = Lesson.objects.filter(day_of_Week = r['day'])
+    for i in range(len(arr)):
+        if(is_date_in_range(r['date'],arr[i].start_time,arr[i].end_time)):
+            sub = {}
+            checks = Check.objects.filter(lesson = arr[i], date = r['date'],student = student)
+            sub['name']=arr[i].name
+            sub['time']=arr[i].time
+            sub['id']  =arr[i].id
+            if(len(checks)!=0):
+                sub['check'] = checks[0].ison
+            else:
+                sub['check'] = '-1'
+            context[str(i+1)]=sub
+            context[str(i+1)]=sub
+    return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
+
+def student_load(request):
+    data = json.loads(request.body.decode('utf-8'))
+    context = {}
+    print(data)
+    lesson = Lesson.objects.get(id = data['lesson'])
+    date = data['date']
+    count = 0
+    for i in Student.objects.filter():
+        print(lesson)
+        print(date)
+        print(i)
+        try:
+            ison = Check.objects.get(lesson = lesson, date=date,student = i).ison
+        except:
+            ison = 0
+        context[str(count)] = {'name' :i.firstname + " " + i.secondname,'ison':ison}
+        count+=1
+
+    
+
+    return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")

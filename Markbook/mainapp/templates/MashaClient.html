@@ -178,21 +178,19 @@
                                     <div class="naming">
                                       <p>${context[i].time}</p>
                                       <h4>${context[i].name}</h4>
+                                      <h2 visibility: hidden>0</h2>
                                       <h1 visibility: hidden id ="idier">${context[i].id}<h1>
+                                    </div>
+                                    <div class="students">
                                     </div>
                                     <div class="arrow-button"></div>
                                   </div>
                                 `;
                 console.log(context[i].check)
-                if(context[i].check=='1'){
-                  div.firstElementChild.style.backgroundColor = 'rgb(163, 246, 182)';
-                }else if(context[i].check=='0'){
-                  div.firstElementChild.style.backgroundColor = 'rgb(251, 202, 202)';
-                }
                 document.getElementsByClassName("lessons-content")[0].appendChild(div);
               }
           }
-  };
+          };
         xmlhttp.open("POST", theUrl, (async = true));
         xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
         xmlhttp.send(JSON.stringify({ date: dater, day: dayer }));
@@ -211,21 +209,45 @@
         today  = new Date(data);
       }
 
-
-      function checkable(clicked){
-        document.getElementsByClassName("students")[0].innerHTML = ''
-        for (let i = 1; i <= 10; i++){
+      function checkable(lesson) {
+        if(lesson.getElementsByTagName("h2")[0].innerHTML=="0"){
+        var xmlhttp = new XMLHttpRequest();
+        var theUrl = "student_load/";
+        var lesson_id = lesson.getElementsByTagName("h1")[0].innerHTML;
+        var date = document.getElementsByClassName("active-day")[0].getElementsByTagName("h3")[0].innerHTML;
+          xmlhttp.onload = function () {
+            if (xmlhttp.status == 200) {
+              var responseText = xmlhttp.responseText;
+              var context = JSON.parse(responseText);
+              console.log(context);
+              console.log(context['0'].name)
+              for(let i=0 ;i<Object.keys(context).length;i++){
                 var div = document.createElement("div");
                 div.innerHTML = `
-                            <div class="human">
                                 <h4>
-                                    ${i}. Ширкин Арсений
+                                    ${0+i+1}. ${context[i].name}
                                 </h4>
-                            </div>
                                         `;
-                document.getElementsByClassName("students")[0].appendChild(div);
+                div.classList.add("human");
+                if(context[i].ison==0 || context[i].ison == false){
+                  div.style.backgroundColor = "'rgb(251, 202, 202)'";
+                }else{
+                  div.style.backgroundColor = 'rgb(163, 246, 182)';
+                }
+                lesson.getElementsByClassName("students")[0].appendChild(div);
+              }
+          }
+          };
+        xmlhttp.open("POST", theUrl, (async = true));
+        xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+        xmlhttp.send(JSON.stringify({ lesson:lesson_id, date:date}));
+        lesson.getElementsByTagName("h2")[0].innerHTML="1";
+        }else{
+          lesson.getElementsByClassName("students")[0].innerHTML="";
+          lesson.getElementsByTagName("h2")[0].innerHTML="0";
         }
       }
+       
     </script>
   </body>
 </html>
