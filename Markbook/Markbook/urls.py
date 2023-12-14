@@ -13,7 +13,7 @@ urlpatterns = [
     path('deleting/',delete_lesson,name='lesson_delete'),
     path('checking_change/',check_change,name='check_change'),
     path('tables/leave/',leave,name='leave'),
-
+    path('adminschedule/leave/',leave,name='leave'),
     path('adminschedule/',adminschedule,name='adminschedule'),
 
 ]
