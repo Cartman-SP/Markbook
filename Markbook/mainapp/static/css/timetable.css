@@ -1,136 +1,141 @@
-body{
-    background-color: #F4F4F4;
-    margin: 0;
+body {
+  background-color: #f4f4f4;
+  margin: 0;
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 
-a p{
-    font-weight: 900;
-    color: #7A4BFF;
-    transition: all .2s ease;
+a p {
+  font-weight: 900;
+  color: #7a4bff;
+  transition: all 0.2s ease;
 }
 
-
-a p:hover{
-    font-weight: 900;
-    color: #a585ff;
+a p:hover {
+  font-weight: 900;
+  color: #a585ff;
 }
 
-.content{
-    margin: 7vw 20vw 7vw 20vw;
+.content {
+  margin: 7vw 20vw 7vw 20vw;
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* background-color: GREEN; */
-    margin-bottom: 20px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: GREEN; */
+  margin-bottom: 20px;
 }
 
-p{
-    font-family: 'Montserrat';
-    font-size: .8vw;
-    margin: 0;
+p {
+  font-family: "Montserrat";
+  font-size: 0.8vw;
+  margin: 0;
 }
 
-h1{
-    font-family: 'Montserrat';
-    font-size: 2vw;
-    margin: 0;
+h1 {
+  font-family: "Montserrat";
+  font-size: 2vw;
+  margin: 0;
 }
 
-table{
-    width: 100%;
-    border-spacing: 1px;
-    margin-bottom: 1vh;
+table {
+  width: 100%;
+  border-spacing: 1px;
+  margin-bottom: 1vh;
 }
 
-.table-editor{
-    margin-top: 20px;
-    text-align: left;
-    margin-bottom: 5vh;
+.table-editor {
+  margin-top: 20px;
+  text-align: left;
+  margin-bottom: 5vh;
 }
 
-td, th{
-    border: 1px solid rgb(186, 186, 186);
-    margin: 0;
-    padding: 20px;
-    
+td,
+th {
+  border: 1px solid rgb(186, 186, 186);
+  margin: 0;
+  padding: 20px;
 }
 
-th{
-    font-family: 'Montserrat';
-    font-size: 1vw;
-    background-color: white;
+th {
+  font-family: "Montserrat";
+  font-size: 1vw;
+  background-color: white;
 }
 
-#add{
-    border: none;
-    border-radius: 2vw;
-    padding: .4vw;
-    background-color: rgb(211, 211, 211);
-    font-family: "Montserrat";
-    font-size: .7vw;
-    transition: all .2s ease;
+#add {
+  border: none;
+  border-radius: 2vw;
+  padding: 0.4vw;
+  background-color: rgb(211, 211, 211);
+  font-family: "Montserrat";
+  font-size: 0.7vw;
+  transition: all 0.2s ease;
 }
 
-#add:hover{
-    background-color: rgb(163, 246, 182);
-    cursor: pointer;
+#add:hover {
+  background-color: rgb(163, 246, 182);
+  cursor: pointer;
 }
 
-
-#clean{
-    margin-left: .5vw;
-    border: none;
-    border-radius: 2vw;
-    padding: .4vw;
-    background-color: rgb(211, 211, 211);
-    font-family: "Montserrat";
-    font-size: .7vw;
-    transition: all .2s ease;
+#clean {
+  margin-left: 0.5vw;
+  border: none;
+  border-radius: 2vw;
+  padding: 0.4vw;
+  background-color: rgb(211, 211, 211);
+  font-family: "Montserrat";
+  font-size: 0.7vw;
+  transition: all 0.2s ease;
 }
 
-#clean:hover{
-    background-color: rgb(251, 202, 202);
-    cursor: pointer;
+#clean:hover {
+  background-color: rgb(251, 202, 202);
+  cursor: pointer;
 }
 
-
-input{
-    width: 100%;
+input {
+  width: 100%;
 }
 
-select{
-    width: 100%;
+select {
+  width: 100%;
 }
-  
+
 .lesson {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    padding: 1vh 2vw 1vh 2vw;
-    border-radius: 0.8vw;
-    margin-bottom: 1vw;
-    transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 1vh 2vw 1vh 2vw;
+  border-radius: 0.8vw;
+  margin-bottom: 1vw;
+  transition: all 0.1s ease;
 }
-  
-.naming {
-    text-align: left;
-  }
 
-.naming p{
-    color: gray;
-    margin-bottom: 5px;
+.naming {
+  text-align: left;
+}
+
+.naming p {
+  color: gray;
+  margin-bottom: 5px;
 }
 
 h4 {
-    font-family: "Montserrat";
-    font-size: 1vw;
-    margin: 0;
-    font-weight: bold;
+  font-family: "Montserrat";
+  font-size: 1vw;
+  margin: 0;
+  font-weight: bold;
+}
+.delete_button {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+#delete {
+  width: 1.5vw;
 }

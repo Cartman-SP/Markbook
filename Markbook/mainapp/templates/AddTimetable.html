@@ -89,12 +89,20 @@
         </div>
         <div class="lessons-content">
           {% for o in lessons %}
-            <div class="lesson" onclick="checkable(this)">
+            <div class="lesson">
               <div class="naming">
                 <p>{{o.time}}</p>
                 <h4>{{o.name}}</h4>
+                <h1 visibility: hidden>{{o.id}}</h1>
               </div>
               <div class="arrow-button"></div>
+              <div class="delete_button" onclick="deleter(this)">
+                <img
+                id="delete"
+                src="https://cdn.icon-icons.com/icons2/1808/PNG/512/trash-can_115312.png"
+                alt="trashcan"
+                />
+              </div>
             </div>
            {% endfor %}
           </div>
@@ -102,10 +110,11 @@
     </div>
 
     <script>
+      CSRF_TOKEN = "{{csrf_token}}"
       function add(){
         name = document.getElementById("name_field").value;
-        start = document.getElementById("start-days").value;
-        end = document.getElementById("end-days").value;
+        start = document.getElementById("start-days").value.replace('-','.');
+        end = document.getElementById("end-days").value.replace('-','.');
         day = document.getElementById("day-select").value;
         time = document.getElementById("time-select").value;
         create_lesson(name,start,end,day,time);
@@ -113,7 +122,6 @@
       }
 
       function create_lesson(name,start,end,day,time){
-          CSRF_TOKEN = "{{csrf_token}}"
           var xmlhttp = new XMLHttpRequest();
           var theUrl = "/lessoning/";
           xmlhttp.open("POST", theUrl, true);
@@ -121,15 +129,35 @@
           xmlhttp.send(JSON.stringify({ name: name, start: start, end: end, day: day,time: time }));
       }
 
+      function deleter(but){
+        var needtodelete = confirm("Вы уверены, что хотите удалить пару?");
+        if(needtodelete){
+                  lesson = but.closest('div[class="lesson"]');
+                  var xmlhttp = new XMLHttpRequest();
+                  var theUrl = "/deleting/";
+                  xmlhttp.open("POST", theUrl, true);
+                  xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+                  xmlhttp.send(JSON.stringify({ id: lesson.getElementsByTagName("h1")[0].innerHTML}));
+                  lesson.remove();
+        }
+      }
+
       function online_lesson(name,start,end,day,time){
                 var div = document.createElement("div");
                 div.innerHTML = `
-                                  <div class="lesson" onclick="checkable(this)">
+                                  <div class="lesson"">
                                     <div class="naming">
                                       <p>${time}</p>
                                       <h4>${name}</h4>
                                     </div>
                                     <div class="arrow-button"></div>
+                                    <div class="delete_button" onclick="deleter(this)">
+                                      <img
+                                      id="delete"
+                                      src="https://cdn.icon-icons.com/icons2/1808/PNG/512/trash-can_115312.png"
+                                      alt="trashcan"
+                                      />
+                                    </div>
                                   </div>
                                 `;
                 document.getElementsByClassName("lessons-content")[0].appendChild(div);

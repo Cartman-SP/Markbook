@@ -10,18 +10,21 @@ def main_page(request):
     context = {}
     form = StudentLoginForm
     model = Student
-    if request.method == "POST":
-        if request.session.test_cookie_worked():
-            field = form(request.POST)
-            if field.is_valid():
-                user = Student.objects.get(code = field.data['code'])
-                request.session["student_id"] = user.id
-                return redirect('/tables')
+    if(request.session["student_id"]==None):
+        if request.method == "POST":
+            if request.session.test_cookie_worked():
+                field = form(request.POST)
+                if field.is_valid():
+                    user = Student.objects.get(code = field.data['code'])
+                    request.session["student_id"] = user.id
+                    return redirect('/tables')
+        else:
+            field = form()
+            context['field'] = field
+        request.session.set_test_cookie()
+        return render(request, 'mainpage.html',context)
     else:
-        field = form()
-        context['field'] = field
-    request.session.set_test_cookie()
-    return render(request, 'mainpage.html',context)
+        return redirect(tables)
 
 
 def leave(request):
@@ -96,4 +99,10 @@ def create_lesson(request):
     lesson = Lesson(name = data['name'], start_time = data['start'], end_time =['end'], day_of_Week = data['day'],time=data['time'], group = Group.objects.get())
     print(lesson)
     lesson.save()
+    return HttpResponse()
+
+def delete_lesson(request):
+    data = json.loads(request.body.decode('utf-8'))
+    print(data['id'])
+    Lesson.objects.get(id=int(data['id'])).delete()
     return HttpResponse()

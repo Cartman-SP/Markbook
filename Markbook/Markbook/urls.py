@@ -9,8 +9,8 @@ urlpatterns = [
     path('tables/get_table/',get_table,name="get_table"),
     path('adding/', add_page, name="add_page"),
     path('checking/',create_check,name='check_create'),
-    path('lessoning/',create_lesson,name='check_create'),
-
+    path('lessoning/',create_lesson,name='lesson_create'),
+    path('deleting/',delete_lesson,name='lesson_delete'),
     path('checking_change/',check_change,name='check_change'),
     path('tables/leave/',leave,name='leave'),
 
