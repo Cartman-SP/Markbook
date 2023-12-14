@@ -14,4 +14,6 @@ urlpatterns = [
     path('checking_change/',check_change,name='check_change'),
     path('tables/leave/',leave,name='leave'),
 
+    path('adminschedule/',adminschedule,name='adminschedule'),
+
 ]
