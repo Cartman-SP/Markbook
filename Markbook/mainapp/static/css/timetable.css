@@ -137,5 +137,9 @@ h4 {
 }
 
 #delete {
-  width: 1.5vw;
+  width: 1vw;
+}
+
+#delete:hover {
+  cursor: pointer;
 }

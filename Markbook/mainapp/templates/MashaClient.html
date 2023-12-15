@@ -14,90 +14,166 @@
     />
   </head>
   <body>
-    <div class="content">
-      <div class="header">
-        <h1>Посещаемость</h1>
-        <div class="user">
-          <h3>{{username}}</h3>
-          <a href="leave/">
+    <button class="menu-button">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </button>
+    <div class="dropdown-container" id="mobile">
+      <div class="nav-bar">
+        <div class="top-items">
+          <a href="#" id="active-nav">
+            <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
+            <p>Посещаемость</p>
+          </a>
+          <a href="/adding">
+            <img src="{% static 'imgs/icon-lessons.png' %}" alt="i">
+            <p>Предметы</p>
+          </a>
+          <a href="#">
+            <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
+            <p>Тема</p>
+          </a>
+        </div>
+        <a href="leave/" class="leave">
+          <img
+                id="leave"
+                src="{% static 'imgs/icon-door.png' %}"
+                alt="door"
+              />
+          <p>Выйти</p>
+        </a>
+      </div>
+    </div>
+    <div class="application">
+      <div>
+        <div class="header" style="visibility: hidden;" id="Margin">
+          <h1>*</h1>
+        </div>
+        <div class="nav-bar" id="desktop">
+          <div class="top-items">
+            <a href="#" id="active-nav">
+              <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
+              <p>Посещаемость</p>
+            </a>
+            <a href="/adding">
+              <img src="{% static 'imgs/icon-lessons.png' %}" alt="i">
+              <p>Предметы</p>
+            </a>
+            <a href="#">
+              <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
+              <p>Тема</p>
+            </a>
+          </div>
+          <a href="leave/" class="leave">
             <img
-              id="leave"
-              src="https://img.icons8.com/ios-glyphs/30/FF2B2B/door-opened.png"
-              alt="door"
-            />
+                  id="leave"
+                  src="{% static 'imgs/icon-door.png' %}"
+                  alt="door"
+                />
+            <p>Выйти</p>
           </a>
         </div>
       </div>
-      <div class="calendar">
-        <div class="day" id="week" onclick="weekchange(-7)">
-          <h4><</h4>
-        </div>
-        <div class="day" id="Mon" onclick="choose(this)">
-          <p>Пн</p>
-          <h4></h4>
-          <h3 visibility: hidden>12312</h3>
-        </div>
-        <div class="day" id="Tue" onclick="choose(this)">
-          <p>Вт</p>
-          <h4></h4>
-          <h3 visibility: hidden>12312</h3>
-        </div>
-        <div class="day" id="Wed" onclick="choose(this)">
-          <p>Ср</p>
-          <h4></h4>
-          <h3 visibility: hidden>12312</h3>
-        </div>
-        <div class="day" id="Thu" onclick="choose(this)">
-          <p>Чт</p>
-          <h4></h4>
-          <h3 visibility: hidden>12312</h3>
-        </div>
-        <div class="day" id="Fri" onclick="choose(this)">
-          <p>Пт</p>
-          <h4></h4>
-          <h3 visibility: hidden>12312</h3>
-        </div>
-        <div class="day" id="Sat" onclick="choose(this)">
-          <p>Сб</p>
-          <h4></h4>
-          <h3 visibility: hidden>12312</h3>
-        </div>
-        <div class="day" id="Sun" onclick="choose(this)">
-          <p>Вс</p>
-          <h4></h4>
-          <h3 visibility: hidden>12312</h3>
-        </div>
-        <div class="day" id="week" onclick="weekchange(7)">
-          <h4>></h4>
-        </div>
-      </div>
-
-      
-      <!-- sample table -->
-      <div class="lessons-content">
-        <div class="lesson">
-          <div class="naming">
-            <h4>Загрузка расписания...</h4>
+      <div class="content">
+        <div class="header">
+          <h1>Расписание</h1>
+          <div class="user">
+            <img
+                src="{% static 'imgs/icon-user.png' %}"
+                alt="user"
+              />
+            <h3>{{username}}</h3>
           </div>
-          <div class="arrow-button"></div>
         </div>
-        <div class="lesson" onclick="checkable(this)">
+        <div class="calendar">
+          <div class="day" id="week" onclick="weekchange(-7)">
+            <h4><</h4>
+          </div>
+          <div class="day" id="Mon" onclick="choose(this)">
+            <p>Пн</p>
+            <h4></h4>
+            <h3 visibility: hidden>12312</h3>
+          </div>
+          <div class="day" id="Tue" onclick="choose(this)">
+            <p>Вт</p>
+            <h4></h4>
+            <h3 visibility: hidden>12312</h3>
+          </div>
+          <div class="day" id="Wed" onclick="choose(this)">
+            <p>Ср</p>
+            <h4></h4>
+            <h3 visibility: hidden>12312</h3>
+          </div>
+          <div class="day" id="Thu" onclick="choose(this)">
+            <p>Чт</p>
+            <h4></h4>
+            <h3 visibility: hidden>12312</h3>
+          </div>
+          <div class="day" id="Fri" onclick="choose(this)">
+            <p>Пт</p>
+            <h4></h4>
+            <h3 visibility: hidden>12312</h3>
+          </div>
+          <div class="day" id="Sat" onclick="choose(this)">
+            <p>Сб</p>
+            <h4></h4>
+            <h3 visibility: hidden>12312</h3>
+          </div>
+          <div class="day" id="Sun" onclick="choose(this)">
+            <p>Вс</p>
+            <h4></h4>
+            <h3 visibility: hidden>12312</h3>
+          </div>
+          <div class="day" id="week" onclick="weekchange(7)">
+            <h4>></h4>
+          </div>
+        </div>
+  
+        
+        <!-- sample table -->
+        <div class="lessons-content">
+          <div class="lesson">
             <div class="naming">
-                <p>8:30-10:10</p>
-                <h4>Линейная албебра</h4>
+              <h4>Загрузка расписания...</h4>
             </div>
-            <div class="students">
-
-                <!-- sample student -->
-                <!-- <div class="human">
-                    <h4>
-                        1. Уебище Писькогрызов
-                    </h4>
-                </div> -->
-            </div>
+            <div class="arrow-button"></div>
+          </div>
+          <div class="lesson" onclick="checkable(this)">
+              <div class="naming">
+                  <p>8:30-10:10</p>
+                  <h4>Линейная албебра</h4>
+              </div>
+              <div class="students">
+  
+                  <!-- sample student -->
+                  <!-- <div class="human">
+                      <h4>
+                          1. Уебище Писькогрызов
+                      </h4>
+                  </div> -->
+              </div>
+          </div>
         </div>
       </div>
     </div>
+    
+    <script>
+      var dropdown = document.getElementsByClassName("menu-button");
+      var i;
+
+      for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var dropdownContent = this.nextElementSibling;
+          if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+          } else {
+            dropdownContent.style.display = "block";
+          }
+        });
+      } 
+    </script>
     <script>
       var CSRF_TOKEN = "{{ csrf_token }}";
       var today = new Date();
