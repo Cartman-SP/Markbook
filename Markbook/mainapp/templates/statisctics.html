@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/statistics.css' %}" />
+    <meta charset="UTF-8" />
+    <title>Markbook | Schedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/basic-ui-color/37/Tick-1024.png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <button class="menu-button">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </button>
+    <div class="dropdown-container" id="mobile">
+      <div class="nav-bar">
+        <div class="top-items">
+          <a href="#" id="active-nav">
+            <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
+            <p>Посещаемость</p>
+          </a>
+          <a href="#">
+            <img src="{% static 'imgs/icon-statistics.png' %}" alt="i">
+            <p>Статистика</p>
+          </a>
+          <a href="">
+            <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
+            <p>Тема</p>
+          </a>
+        </div>
+        <a href="leave/" class="leave">
+          <img
+                id="leave"
+                src="{% static 'imgs/icon-door.png' %}"
+                alt="door"
+              />
+          <p>Выйти</p>
+        </a>
+      </div>
+    </div>
+    <div class="application">
+      
+      <div>
+        <div class="header" style="visibility: hidden;" id="Margin">
+          <h1>*</h1>
+        </div>
+        <div class="nav-bar" id="desktop">
+          <div class="top-items">
+            <a href="/tables">
+              <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
+              <p>Посещаемость</p>
+            </a>
+            <a href="#" id="active-nav">
+              <img src="{% static 'imgs/icon-statistics.png' %}" alt="i">
+              <p>Статистика</p>
+            </a>
+            <a href="#">
+              <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
+              <p>Тема</p>
+            </a>
+          </div>
+          <a href="leave/" class="leave">
+            <img
+                  id="leave"
+                  src="{% static 'imgs/icon-door.png' %}"
+                  alt="door"
+                />
+            <p>Выйти</p>
+          </a>
+        </div>
+        <!-- <div class="nav-bar" id="banner">
+          <img src="{% static 'imgs/banner.jpg' %}" alt="">
+          <h3>Welcome to Markbook!</h3>
+        </div> -->
+      </div>
+
+      
+      <div class="content">
+        <div class="header">
+            <h1>Статистика</h1>
+            <a href="/adminschedule/">
+              <p>Back</p>
+            </a>
+        </div>
+        <div class="calendar">
+            
+          </div>
+      </div>
+    </div>
+    
+    <script>
+      var dropdown = document.getElementsByClassName("menu-button");
+      var i;
+
+      for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var dropdownContent = this.nextElementSibling;
+          if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+          } else {
+            dropdownContent.style.display = "block";
+          }
+        });
+      } 
+    </script>
+  </body>
+</html>
