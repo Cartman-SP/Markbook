@@ -28,15 +28,15 @@
     <div class="dropdown-container" id="mobile">
       <div class="nav-bar">
         <div class="top-items">
-          <a href="/tables" id="active-nav">
+          <a href="/tables">
             <img src="{% static 'imgs/icon-timetable.png' %}" alt="i" />
             <p>Посещаемость</p>
           </a>
-          <a href="/statistics">
+          <a href="#" id="active-nav">
             <img src="{% static 'imgs/icon-statistics.png' %}" alt="i" />
             <p>Статистика</p>
           </a>
-          <a href="">
+          <a href="#">
             <img src="{% static 'imgs/icon-theme.png' %}" alt="i" />
             <p>Тема</p>
           </a>
@@ -98,84 +98,86 @@
             <h4>Пропуски</h4>
           </div>
           <div class="day">
-            <h4>Sample</h4>
+            <h4>test</h4>
           </div>
         </div>
 
-        <div class="info">
-          <div class="info-block">
-            <h4>Математика</h4>
-            <table class="charts-css bar show-labels">
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Пропуски </th>
-                <td style="--size: 0.3; background-color: rgb(251, 202, 202); margin-left: 2vw;"> 3 </td>
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Посещения </th>
-                <td style="--size: 0.7; background-color: rgb(163, 246, 182); margin-left: 2vw;"> 7 </td>
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Занятий </th>
-                <td style="--size: 1; background-color: #dadada; margin-left: 2vw;"> 10 </td>
-              </tr>         
-            </table>
+        <div class="statistic-content">
+          <div class="info">
+            <div class="info-block">
+              <h4>Математика</h4>
+              <table class="charts-css bar show-labels">
+                <tr>
+                  <th scope="row" id="table-th"> Пропуски </th>
+                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Посещения </th>
+                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Занятий </th>
+                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
+                </tr>         
+              </table>
+            </div>
+            <div class="info-block">
+              <h4>Кек</h4>
+              <table class="charts-css bar show-labels">
+                <tr>
+                  <th scope="row" id="table-th"> Пропуски </th>
+                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Посещения </th>
+                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Занятий </th>
+                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
+                </tr>         
+              </table>
+            </div>
           </div>
-          <div class="info-block">
-            <h4>Русский</h4>
-            <table class="charts-css bar show-labels">
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Пропуски </th>
-                <td style="--size: 0.1; background-color: rgb(251, 202, 202); margin-left: 2vw;"> 1 </td>
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Посещения </th>
-                <td style="--size: 0.9; background-color: rgb(163, 246, 182); margin-left: 2vw;"> 9 </td>
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Занятий </th>
-                <td style="--size: 1; background-color: #dadada; margin-left: 2vw;"> 10 </td>
-              </tr>         
-            </table>
+          <div class="info">
+            <div class="info-block">
+              <h4>Математика</h4>
+              <table class="charts-css bar show-labels">
+                <tr>
+                  <th scope="row" id="table-th"> Пропуски </th>
+                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Посещения </th>
+                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Занятий </th>
+                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
+                </tr>         
+              </table>
+            </div>
+            <div class="info-block">
+              <h4>Кек</h4>
+              <table class="charts-css bar show-labels">
+                <tr>
+                  <th scope="row" id="table-th"> Пропуски </th>
+                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Посещения </th>
+                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Занятий </th>
+                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
+                </tr>         
+              </table>
+            </div>
           </div>
         </div>
-        <div class="info">
-          <div class="info-block">
-            <h4>ОРГ</h4>
-            <table class="charts-css bar show-labels">
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Пропуски </th>
-                <td style="--size: 1; background-color: rgb(251, 202, 202); margin-left: 2vw;"> 15 </td>
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Посещения </th>
-                <td style="--size: 0,1; background-color: rgb(163, 246, 182); margin-left: 2vw;"> 0 </td>
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Занятий </th>
-                <td style="--size: 1; background-color: #dadada; margin-left: 2vw;"> 15 </td>
-              </tr>         
-            </table>
-          </div>
-          <div class="info-block">
-            <h4>Программирование</h4>
-            <table class="charts-css bar show-labels">
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Пропуски </th>
-                <td style="--size: 0.3; background-color: rgb(251, 202, 202); margin-left: 2vw;"> 3 </td>
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Посещения </th>
-                <td style="--size: 0.7; background-color: rgb(163, 246, 182); margin-left: 2vw;"> 7 </td>
-              </tr>
-              <tr>
-                <th scope="row" style="text-align: left; width: 10vw;"> Занятий </th>
-                <td style="--size: 1; background-color: #dadada; margin-left: 2vw;"> 10 </td>
-              </tr>         
-            </table>
-          </div>
         </div>
         
-      </div>
     </div>
 
     <script>
@@ -201,6 +203,7 @@
     <script>
       var dropdown = document.getElementsByClassName("menu-button");
       var i;
+      var tableContent = document.getElementsByClassName("statistic-content");
 
       for (i = 0; i < dropdown.length; i++) {
         dropdown[i].addEventListener("click", function () {
@@ -208,8 +211,10 @@
           var dropdownContent = this.nextElementSibling;
           if (dropdownContent.style.display === "block") {
             dropdownContent.style.display = "none";
+            tableContent[0].style.display = "block";
           } else {
             dropdownContent.style.display = "block";
+            tableContent[0].style.display = "none";
           }
         });
       }
