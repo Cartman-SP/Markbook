@@ -179,6 +179,26 @@
     </div>
 
     <script>
+      var CSRF_TOKEN = "{{ csrf_token }}";
+      function PageLoad(){
+        //father = document.getElementsById();
+        var xmlhttp = new XMLHttpRequest();
+        var theUrl = "/statistic/";
+        xmlhttp.onload = function () {
+            if (xmlhttp.status == 200) {
+              var responseText = xmlhttp.responseText;
+              var context = JSON.parse(responseText);
+            }
+        }
+        xmlhttp.open("POST", theUrl, (async = true));
+        xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+        xmlhttp.send(JSON.stringify({ id: '{{ student_id }}' }));
+      }
+
+      window.onload = PageLoad;
+    </script>
+
+    <script>
       var dropdown = document.getElementsByClassName("menu-button");
       var i;
 

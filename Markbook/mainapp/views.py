@@ -6,6 +6,7 @@ from mainapp.models import *
 from django.http import HttpResponse
 import json
 from datetime import datetime
+import math
 
 def isadmin(func):
     def wrapper(request, *args, **kwargs):
@@ -65,16 +66,41 @@ def tables(request):
 
 @isadmin
 def adminschedule(request):
-    return render(request,'MashaClient.html')
+    context = {'username':Student.objects.get(id=request.session.get('student_id')).firstname}
+    return render(request,'MashaClient.html',context)
 
+@isadmin
 def adminstatistic(request):
-    return render(request,'adminstatistic.html')
+    context = {'username':Student.objects.get(id=request.session.get('student_id')).firstname}
+    return render(request,'adminstatistic.html',context)
 
 def statistics(request):
     if request.session.get("student_id") is not None:
-        return render(request,'statisctics.html')
+        student = Student.objects.get(id=request.session.get('student_id'))
+        context = {'username': student.firstname, 'student_id': student.id}
+        return render(request,'statisctics.html',context)
     else:
         return redirect("Main")
+
+def difference(date1, date2):
+    format = "%d.%m.%Y"
+    date1 = datetime.strptime(date1, format)
+    date2 = datetime.strptime(date2, format)
+    difference = date2 - date1
+    return difference.days
+
+def statistic(request):
+    context={}
+    student = Student.objects.get(id = request.session.get('student_id'))
+    checks = Check.objects.filter(student = student)
+    lessons = Lesson.objects.filter()
+    sub = {}
+    today = datetime.today().strftime('%d.%m.%Y')
+    
+    for i in range(len(lessons)):
+        sub[lessons[i].name] = math.ceil(difference(today,lessons[i].end_time)/7)
+    print(sub)
+    return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
 
 
 def is_date_in_range(date_to_check, start_date, end_date):
@@ -122,7 +148,7 @@ def get_table(request):
 
 @isadmin
 def add_page(request):
-    context = {}
+    context = {'username':Student.objects.get(id=request.session.get('student_id')).firstname}
     lessons = Lesson.objects.filter()
     context['lessons'] = lessons
     return render(request,"AddTimetable.html",context)

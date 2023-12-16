@@ -19,6 +19,9 @@ urlpatterns = [
     path('adminschedule/student_load/',student_load,name='adminschedule'),
     path('adminstatistics/', adminstatistic, name = 'adminstat'),
     path('statistics/',statistics,name='statistics'),
+    path('statistics/leave/',leave,name='leave'),
+    path('adminstatistics/leave/',leave,name='leave'),
+    path('statistic/',statistic,name="statistic")
 
 
 ]
