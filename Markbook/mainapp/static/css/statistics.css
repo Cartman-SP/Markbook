@@ -2,21 +2,6 @@ body {
     background-color: #f4f4f4;
     margin: 0;
   }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  a p {
-    font-weight: 900;
-    color: #7a4bff;
-    transition: all 0.2s ease;
-  }
-  
-  a p:hover {
-    font-weight: 900;
-    color: #a585ff;
-  }
 
   .application {
     display: flex;
@@ -194,38 +179,16 @@ body {
     font-weight: 100;
   }
   
-  .calendar {
+  .statistics-menu {
+    width: 55vw;
     font-family: "Montserrat";
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     background-color: white;
     filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
     padding: .2vw;
     border-radius: 0.7vw;
-  }
-  
-  #week h4 {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;
-    font-weight: 200;
-    color: gray;
-  }
-  
-  #week{
-    text-align: center;
-    width: 1vw;
-    padding: 1vh;
-    justify-content: center;
-  }
-  
-  #week:hover {
-    font-weight: 200;
-    color: gray;
   }
   
   .days-row {
@@ -237,19 +200,15 @@ body {
   }
   
   .day {
-    margin: 0 .5vw 0 .5vw;
-    width: 2vw;
-    display: flex;
+    margin: 0 .5vw 0 0;
+    width: auto;
+    display: block;
     text-align: center;
     align-items: center;
     background-color: white;
     padding: 1vh 2vw 1vh 2vw;
     border-radius: 0.7vw;
     transition: 0.2s ease;
-  }
-  
-  .day h4 {
-    margin-left: 5px;
   }
   
   .day:hover {
@@ -259,8 +218,8 @@ body {
   }
   
   .active-day {
-    margin: 0 .5vw 0 .5vw;
-    width: 2vw;
+    margin: 0 .5vw 0 0;
+    width: auto;
     display: flex;
     text-align: center;
     align-items: center;
@@ -284,8 +243,21 @@ body {
     color: white;
   }
   
-  .lessons-content {
-    margin-top: 5vh;
+  .info{
+    margin-top: 2vw;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .info-block{
+    width: 21vw;
+    background-color: white;
+    padding: 2vh 4vw 2vh 2vw;
+    border-radius: 0.7vw;
+  }
+
+  .info-block h4{
+    margin-bottom: 1vw
   }
   
   #banner{
@@ -316,29 +288,20 @@ body {
     width: 9vw;
   }
   
-  .lesson {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    padding: 1vh 2vw 1vh 2vw;
-    border-radius: 0.8vw;
-    margin-bottom: 1vw;
-    transition: all 0.1s ease;
+  table tr td {
+    transform-origin: left;
+    animation: revealing-bars 2s linear;
+  }
+  @keyframes revealing-bars {
+    0%  { transform: scaleX( 0 ); }
+    30% { transform: scaleX( 1 ); }
   }
   
-  .naming {
-    text-align: left;
+  table{
+    font-family: "Montserrat";
+    font-size: 0.7vw;
   }
-  
-  .naming p{
-    color: gray;
-    margin-bottom: 5px;
-  }
-  
-  .lesson:hover {
-    cursor: pointer;
-    filter: drop-shadow(0 0px 5px rgb(231, 231, 231));
-  }
+
   
   @media (max-width: 1000px) {
     body {
