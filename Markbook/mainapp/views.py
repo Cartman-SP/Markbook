@@ -6,25 +6,46 @@ from mainapp.models import *
 from django.http import HttpResponse
 import json
 from datetime import datetime
+
+def isadmin(func):
+    def wrapper(request, *args, **kwargs):
+        student_id = request.session.get("student_id")
+        if student_id == 2:
+            return func(request, *args, **kwargs)
+        else:
+            return redirect('Main')
+    return wrapper
+
 def main_page(request):
     context = {}
-    form = StudentLoginForm
-    model = Student
-    if(request.session["student_id"]==None):
-        if request.method == "POST":
-            if request.session.test_cookie_worked():
-                field = form(request.POST)
-                if field.is_valid():
-                    user = Student.objects.get(code = field.data['code'])
-                    request.session["student_id"] = user.id
-                    return redirect('/tables')
-        else:
-            field = form()
-            context['field'] = field
+    if request.session.get("student_id") is None:
         request.session.set_test_cookie()
-        return render(request, 'mainpage.html',context)
+        
+        if request.method == "POST":
+            form = StudentLoginForm(request.POST)
+            context['form'] = form
+
+            if form.is_valid():
+                try:
+                    user = Student.objects.get(code=form.cleaned_data['code'])
+                    request.session["student_id"] = user.id
+                    if request.session.get("student_id") == 2:
+                        return redirect('/adminschedule')
+                    else:
+                        print(request.session.get("student_id"))
+                        return redirect('/tables')
+                except Student.DoesNotExist:
+                    form.add_error('code', 'Неверный код')
+        else:
+            form = StudentLoginForm()
+            context['form'] = form
+
+        return render(request, 'mainpage.html', context)
     else:
-        return redirect(tables)
+        if request.session.get("student_id") == 2:
+            return redirect("/adminschedule")
+        else:
+            return redirect('/tables')
 
 
 def leave(request):
@@ -42,14 +63,18 @@ def tables(request):
         return redirect(main_page)
 
 
-
+@isadmin
 def adminschedule(request):
     return render(request,'MashaClient.html')
 
+def adminstatistic(request):
+    return render(request,'adminstatistic.html')
 
 def statistics(request):
-    return render(request,'statisctics.html')
-
+    if request.session.get("student_id") is not None:
+        return render(request,'statisctics.html')
+    else:
+        return redirect("Main")
 
 
 def is_date_in_range(date_to_check, start_date, end_date):
@@ -95,11 +120,13 @@ def get_table(request):
             context[str(i+1)]=sub
     return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
 
+@isadmin
 def add_page(request):
     context = {}
     lessons = Lesson.objects.filter()
     context['lessons'] = lessons
     return render(request,"AddTimetable.html",context)
+
 
 def create_lesson(request):
     data = json.loads(request.body.decode('utf-8'))

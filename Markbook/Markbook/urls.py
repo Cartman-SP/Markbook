@@ -17,6 +17,7 @@ urlpatterns = [
     path('adminschedule/',adminschedule,name='adminschedule'),
     path('adminschedule/get_table/',get_table,name="get_table"),
     path('adminschedule/student_load/',student_load,name='adminschedule'),
+    path('adminstatistics/', adminstatistic, name = 'adminstat'),
     path('statistics/',statistics,name='statistics'),
 
 

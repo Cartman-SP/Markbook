@@ -7,19 +7,25 @@
     <title>Markbook | Code input</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/basic-ui-color/37/Tick-1024.png">
+    <link
+      rel="icon"
+      href="https://cdn2.iconfinder.com/data/icons/basic-ui-color/37/Tick-1024.png"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="input-container">
-      <h1>Введи свой код</h1>
-      <form action="" method="post" id="form">
-        {% csrf_token %} {{ field }}
-        <input type="submit" value=">" id="submit"/>
-      </form>
-    </div>
+    <form action="" method="post" id="form">
+      <div class="input-container">
+        <h1>Введи свой код</h1>
+        {% csrf_token %} {{ form.code }}
+        <input type="submit" value=">" id="submit" />
+      </div>
+      {% for field, errors in form.errors.items %} {% for error in errors %}
+      <div>{{ error }}</div>
+      {% endfor %} {% endfor %}
+    </form>
   </body>
 </html>

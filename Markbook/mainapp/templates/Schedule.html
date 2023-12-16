@@ -239,6 +239,19 @@
               var responseText = xmlhttp.responseText;
               var context = JSON.parse(responseText);
               document.getElementsByClassName("lessons-content")[0].innerHTML = ''
+              console.log(context);
+              if(Object.keys(context).length==0){
+                var div = document.createElement("div");
+                div.innerHTML = `
+                                  <div class="lesson">
+                                    <div class="naming">
+                                      <h4>В этот день пар нет :)</h4>
+                                    </div>
+                                    <div class="arrow-button"></div>
+                                  </div>
+              `;
+              document.getElementsByClassName("lessons-content")[0].appendChild(div);
+              }else{
               for(var i in context){
                 var div = document.createElement("div");
                 div.innerHTML = `
@@ -258,7 +271,7 @@
                   div.firstElementChild.style.backgroundColor = 'rgb(251, 202, 202)';
                 }
                 document.getElementsByClassName("lessons-content")[0].appendChild(div);
-              }
+              }}
           }
   };
         xmlhttp.open("POST", theUrl, (async = true));
