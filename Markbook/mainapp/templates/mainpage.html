@@ -24,7 +24,10 @@
         <input type="submit" value=">" id="submit" />
       </div>
       {% for field, errors in form.errors.items %} {% for error in errors %}
-      <div>{{ error }}</div>
+      <div class="error">
+        <p>Ошибка:</p>
+        {{ error }}
+      </div>
       {% endfor %} {% endfor %}
     </form>
   </body>

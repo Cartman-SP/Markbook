@@ -26,7 +26,7 @@ input {
 }
 
 #form {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
 }
@@ -42,4 +42,18 @@ input {
 
 #submit:hover {
   cursor: pointer;
+}
+
+.error{
+  margin-top: 1vw;
+  font-family: "Montserrat";
+  font-size: 1vw;
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+
+.error p{
+  margin: 0;
+  margin-right: 10px;
 }

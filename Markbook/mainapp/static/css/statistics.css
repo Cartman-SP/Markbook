@@ -116,7 +116,6 @@ body {
     margin-right: 10px;
   }
   
-  
   p {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -257,7 +256,8 @@ body {
   }
 
   .info-block h4{
-    margin-bottom: 1vw
+    margin-bottom: 1vw;
+    font-size: 1vw;
   }
   
   #banner{
@@ -299,7 +299,16 @@ body {
   
   table{
     font-family: "Montserrat";
-    font-size: 0.7vw;
+  }
+
+  #table-th{
+    font-size: .7vw;
+    text-align: left;
+    width: 10vw;
+  }
+
+  #table-td{
+    margin-left: 2vw;
   }
 
   
@@ -517,10 +526,12 @@ body {
       font-weight: 100;
     }
     
-    .calendar {
+    .statistics-menu {
+      /* Width of calendar bar IMPORTANT*/
+      width: auto; 
       font-family: "Montserrat";
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
       align-items: center;
       background-color: transparent;
       filter: none;
@@ -559,7 +570,7 @@ body {
     
     .day {
       margin: 0 .5vw 0 .5vw;
-      width: 8vw;
+      width: auto;
       display: block;
       text-align: center;
       align-items: center;
@@ -570,7 +581,7 @@ body {
     }
     
     .day h4 {
-      margin-left: 5px;
+      margin-left: 0;
     }
     
     .day:hover {
@@ -581,7 +592,7 @@ body {
     
     .active-day {
       margin: 0 .5vw 0 .5vw;
-      width: 8vw;
+      width: auto;
       display: block;
       text-align: center;
       align-items: center;
@@ -593,7 +604,7 @@ body {
     }
     
     .active-day h4 {
-      margin-left: 5px;
+      margin-left: 0;
     }
     
     .active-day:hover {
@@ -603,10 +614,6 @@ body {
     
     .active-day p {
       color: white;
-    }
-    
-    .lessons-content {
-      margin-top: 3vh;
     }
     
     #banner{
@@ -636,29 +643,54 @@ body {
       top: 1vw;
       width: 9vw;
     }
+
+    table tr td {
+      transform-origin: left;
+      animation: revealing-bars 2s linear;
+    }
+
+    @keyframes revealing-bars {
+      0%  { transform: scaleX( 0 ); }
+      30% { transform: scaleX( 1 ); }
+    }
     
-    .lesson {
-      display: flex;
-      align-items: center;
+    table{
+      font-family: "Montserrat";
+      font-size: 0.7vw;
+    }
+
+    .info{
+      z-index: 0;
+      margin-top: 0;
+      display: block;
+      justify-content: space-between;
+    }
+  
+    .info-block{
+      margin-top: 5vw;
+      width: auto;
       background-color: white;
-      padding: 1vh 5vw 1vh 5vw;
+      padding: 2vh 2vw 2vh 2vw;
       border-radius: 3vw;
-      margin-bottom: 2vw;
-      transition: all 0.1s ease;
+    }
+  
+    .info-block h4{
+      margin-bottom: 1vw;
+      font-size: 5vw;
     }
     
-    .naming {
+    #table-th{
+      font-size: 3vw;
       text-align: left;
+      width: 20vw;
     }
-    
-    .naming p{
-      color: gray;
-      margin-bottom: 5px;
-    }
-    
-    .lesson:hover {
-      cursor: pointer;
-      filter: drop-shadow(0 0px 5px rgb(231, 231, 231));
+  
+    #table-td{
+      font-size: 3vw;
+      margin-left: 20vw;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      max-width: -moz-available;
     }
   }
   

@@ -15,6 +15,9 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+
   </head>
   <body>
     <button class="menu-button">
@@ -25,15 +28,15 @@
     <div class="dropdown-container" id="mobile">
       <div class="nav-bar">
         <div class="top-items">
-          <a href="/adminschedule" id="active-nav">
+          <a href="/adminschedule">
             <img src="{% static 'imgs/icon-timetable.png' %}" alt="i" />
             <p>Посещаемость</p>
           </a>
           <a href="/adding">
-            <img src="{% static 'imgs/icon-lessons.png' %}" alt="i" />
+            <img src="{% static 'imgs/icon-lessons.png' %}" alt="i">
             <p>Предметы</p>
           </a>
-          <a href="/adminstatistics">
+          <a href="#" id="active-nav">
             <img src="{% static 'imgs/icon-statistics.png' %}" alt="i" />
             <p>Статистика</p>
           </a>
@@ -60,10 +63,10 @@
               <p>Посещаемость</p>
             </a>
             <a href="/adding">
-              <img src="{% static 'imgs/icon-lessons.png' %}" alt="i" />
+              <img src="{% static 'imgs/icon-lessons.png' %}" alt="i">
               <p>Предметы</p>
             </a>
-            <a href="/adminstatistics" id="active-nav">
+            <a href="#" id="active-nav">
               <img src="{% static 'imgs/icon-statistics.png' %}" alt="i" />
               <p>Статистика</p>
             </a>
@@ -90,17 +93,105 @@
       <div class="content">
         <div class="header">
           <h1>Статистика</h1>
-          <a href="/adminschedule/">
-            <p>Back</p>
-          </a>
+          <div class="user">
+            <img
+                src="{% static 'imgs/icon-user.png' %}"
+                alt="user"
+              />
+            <h3>{{username}}</h3>
+          </div>
         </div>
-        <div class="calendar"></div>
-      </div>
+        <div class="statistics-menu">
+          <div class="active-day">
+            <h4>Пропуски</h4>
+          </div>
+          <div class="day">
+            <h4>test</h4>
+          </div>
+        </div>
+
+        <div class="statistic-content">
+          <div class="info">
+            <div class="info-block">
+              <h4>Математика</h4>
+              <table class="charts-css bar show-labels">
+                <tr>
+                  <th scope="row" id="table-th"> Пропуски </th>
+                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Посещения </th>
+                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Занятий </th>
+                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
+                </tr>         
+              </table>
+            </div>
+            <div class="info-block">
+              <h4>Кек</h4>
+              <table class="charts-css bar show-labels">
+                <tr>
+                  <th scope="row" id="table-th"> Пропуски </th>
+                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Посещения </th>
+                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Занятий </th>
+                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
+                </tr>         
+              </table>
+            </div>
+          </div>
+          <div class="info">
+            <div class="info-block">
+              <h4>Математика</h4>
+              <table class="charts-css bar show-labels">
+                <tr>
+                  <th scope="row" id="table-th"> Пропуски </th>
+                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Посещения </th>
+                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Занятий </th>
+                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
+                </tr>         
+              </table>
+            </div>
+            <div class="info-block">
+              <h4>Кек</h4>
+              <table class="charts-css bar show-labels">
+                <tr>
+                  <th scope="row" id="table-th"> Пропуски </th>
+                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Посещения </th>
+                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Занятий </th>
+                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
+                </tr>         
+              </table>
+            </div>
+          </div>
+        </div>
+        </div>
+        
     </div>
 
     <script>
       var dropdown = document.getElementsByClassName("menu-button");
       var i;
+      var tableContent = document.getElementsByClassName("statistic-content");
 
       for (i = 0; i < dropdown.length; i++) {
         dropdown[i].addEventListener("click", function () {
@@ -108,8 +199,10 @@
           var dropdownContent = this.nextElementSibling;
           if (dropdownContent.style.display === "block") {
             dropdownContent.style.display = "none";
+            tableContent[0].style.display = "block";
           } else {
             dropdownContent.style.display = "block";
+            tableContent[0].style.display = "none";
           }
         });
       }
