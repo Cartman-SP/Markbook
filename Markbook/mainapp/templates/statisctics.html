@@ -15,6 +15,9 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+
   </head>
   <body>
     <button class="menu-button">
@@ -82,11 +85,96 @@
       <div class="content">
         <div class="header">
           <h1>Статистика</h1>
-          <a href="/adminschedule/">
-            <p>Back</p>
-          </a>
+          <div class="user">
+            <img
+                src="{% static 'imgs/icon-user.png' %}"
+                alt="user"
+              />
+            <h3>{{username}}</h3>
+          </div>
         </div>
-        <div class="calendar"></div>
+        <div class="statistics-menu">
+          <div class="active-day">
+            <h4>Пропуски</h4>
+          </div>
+          <div class="day">
+            <h4>Sample</h4>
+          </div>
+        </div>
+
+        <div class="info">
+          <div class="info-block">
+            <h4>Математика</h4>
+            <table class="charts-css bar show-labels">
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Пропуски </th>
+                <td style="--size: 0.3; background-color: rgb(251, 202, 202); margin-left: 2vw;"> 3 </td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Посещения </th>
+                <td style="--size: 0.7; background-color: rgb(163, 246, 182); margin-left: 2vw;"> 7 </td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Занятий </th>
+                <td style="--size: 1; background-color: #dadada; margin-left: 2vw;"> 10 </td>
+              </tr>         
+            </table>
+          </div>
+          <div class="info-block">
+            <h4>Русский</h4>
+            <table class="charts-css bar show-labels">
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Пропуски </th>
+                <td style="--size: 0.1; background-color: rgb(251, 202, 202); margin-left: 2vw;"> 1 </td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Посещения </th>
+                <td style="--size: 0.9; background-color: rgb(163, 246, 182); margin-left: 2vw;"> 9 </td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Занятий </th>
+                <td style="--size: 1; background-color: #dadada; margin-left: 2vw;"> 10 </td>
+              </tr>         
+            </table>
+          </div>
+        </div>
+        <div class="info">
+          <div class="info-block">
+            <h4>ОРГ</h4>
+            <table class="charts-css bar show-labels">
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Пропуски </th>
+                <td style="--size: 1; background-color: rgb(251, 202, 202); margin-left: 2vw;"> 15 </td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Посещения </th>
+                <td style="--size: 0,1; background-color: rgb(163, 246, 182); margin-left: 2vw;"> 0 </td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Занятий </th>
+                <td style="--size: 1; background-color: #dadada; margin-left: 2vw;"> 15 </td>
+              </tr>         
+            </table>
+          </div>
+          <div class="info-block">
+            <h4>Программирование</h4>
+            <table class="charts-css bar show-labels">
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Пропуски </th>
+                <td style="--size: 0.3; background-color: rgb(251, 202, 202); margin-left: 2vw;"> 3 </td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Посещения </th>
+                <td style="--size: 0.7; background-color: rgb(163, 246, 182); margin-left: 2vw;"> 7 </td>
+              </tr>
+              <tr>
+                <th scope="row" style="text-align: left; width: 10vw;"> Занятий </th>
+                <td style="--size: 1; background-color: #dadada; margin-left: 2vw;"> 10 </td>
+              </tr>         
+            </table>
+          </div>
+        </div>
+        
       </div>
     </div>
 

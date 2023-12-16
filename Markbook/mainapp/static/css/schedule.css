@@ -180,6 +180,9 @@ h5 {
 }
 
 .calendar {
+  /* Width of calendar bar IMPORTANT*/
+  width: 55vw; 
+
   font-family: "Montserrat";
   display: flex;
   justify-content: space-between;
