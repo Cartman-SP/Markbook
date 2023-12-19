@@ -57,3 +57,66 @@ input {
   margin: 0;
   margin-right: 10px;
 }
+
+
+@media (max-width: 1000px){
+  body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .input-container {
+    text-align: center;
+  }
+  
+  h1 {
+    font-family: "Montserrat";
+    font-size: 10vw;
+  }
+  
+  input {
+    font-family: "Montserrat";
+    padding: 1vh 1vw 1vh 1vw;
+    width: 50vw;
+    font-size: 10vw;
+    border-radius: 3vw;
+    border: none;
+  }
+  
+  #form {
+    display: block;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #submit {
+    margin-left: 5vw;
+    padding: 0vw;
+    font-family: "Montserrat";
+    font-size: 10vw;
+    width: 10vw;
+    height: 15vw;
+  }
+  
+  #submit:hover {
+    cursor: pointer;
+  }
+  
+  .error{
+    margin-top: 5vw;
+    font-family: "Montserrat";
+    font-size: 5vw;
+    display: flex;
+    justify-content: center;
+    color: red;
+  }
+  
+  .error p{
+    margin: 0;
+    margin-right: 10px;
+  }
+}
