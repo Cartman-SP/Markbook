@@ -111,6 +111,11 @@
 
     <script>
       CSRF_TOKEN = "{{csrf_token}}"
+
+      function reverse_data(a){
+        a = a.split('.');
+        return a[2]+"."+a[1]+'.'+a[0];
+      }
       function add(){
         name = document.getElementById("name_field").value;
         start = document.getElementById("start-days").value.replace('-','.');
@@ -126,6 +131,11 @@
           var theUrl = "/lessoning/";
           xmlhttp.open("POST", theUrl, true);
           xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+          start = start.replace("-",".");
+          end = end.replace("-",".");
+          start = reverse_data(start);
+          end = reverse_data(end);
+          console.log(end);
           xmlhttp.send(JSON.stringify({ name: name, start: start, end: end, day: day,time: time }));
       }
 

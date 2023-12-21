@@ -156,7 +156,9 @@ def add_page(request):
 
 def create_lesson(request):
     data = json.loads(request.body.decode('utf-8'))
-    lesson = Lesson(name = data['name'], start_time = data['start'], end_time =['end'], day_of_Week = data['day'],time=data['time'], group = Group.objects.get())
+    print(data['end'])
+    print(data['start'])
+    lesson = Lesson(name = data['name'], start_time = data['start'], end_time = data['end'], day_of_Week = data['day'],time=data['time'], group = Group.objects.get())
     lesson.save()
     return HttpResponse()
 
