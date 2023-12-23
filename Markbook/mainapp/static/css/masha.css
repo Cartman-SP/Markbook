@@ -1,5 +1,29 @@
+.lightmode {
+  --color-validate-green: rgb(163, 246, 182);
+  --color-validate-red: rgb(251, 202, 202);
+  --color-shadow: rgb(223, 223, 223);
+  --color-text: black;
+  --color-background: #f4f4f4;
+  --color-main: white;
+  --color-disable: gray;
+  --color-active: #7A4BFF;
+}
+
+.darkmode{
+  --color-validate-green: rgb(36, 68, 44);
+  --color-validate-red: rgb(134, 68, 68);
+  --color-shadow: rgb(26, 26, 26);
+  --color-text: white;
+  --color-background: #0e0e0e;
+  --color-main: rgb(22, 22, 22);
+  --color-disable: gray;
+  --color-active: #7A4BFF;
+}
+
 body {
-  background-color: #f4f4f4;
+  font-family: "Montserrat";
+  color: var(--color-text);
+  background-color: var(--color-background);
   margin: 0;
 }
 
@@ -21,12 +45,12 @@ body {
   display: block;
   text-align: left;
   align-items: center;
-  background-color: white;
+  background-color: var(--color-main);
   border-radius: 0.7vw;
   transition: 0.2s ease;
   margin-right: 2vw;
   overflow: hidden;
-  filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+  filter: drop-shadow(0px 0px 10px var(--color-shadow));
 }
 
 .leave{
@@ -57,7 +81,7 @@ body {
   padding: 2.5vh 0 2.5vh 3vh;
   text-decoration: none;
   transition: all .2s ease;
-  color: gray;
+  color: var(--color-disable);
 }
 
 .nav-bar a p{
@@ -85,12 +109,12 @@ body {
 
 .top-items a p{
   font-weight: 100;
-  color: gray;
+  color: var(--color-disable);
   margin-left: 10px;
 }
 
 #active-nav{
-  background-color: #f4f4f4;
+  background-color: var(--color-background);
 }
 
 #active-nav img{
@@ -184,8 +208,8 @@ h5 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+  background-color: var(--color-main);
+  filter: drop-shadow(0px 0px 10px var(--color-shadow));
   padding: .2vw;
   border-radius: 0.7vw;
 }
@@ -198,7 +222,7 @@ h5 {
       -ms-user-select: none; /* Internet Explorer/Edge */
           user-select: none;
   font-weight: 200;
-  color: gray;
+  color: var(--color-disable);
 }
 
 #week{
@@ -210,7 +234,7 @@ h5 {
 
 #week:hover {
   font-weight: 200;
-  color: gray;
+  color: var(--color-disable);
 }
 
 .days-row {
@@ -227,7 +251,7 @@ h5 {
   display: flex;
   text-align: center;
   align-items: center;
-  background-color: white;
+  background-color: var(--color-main);
   padding: 1vh 2vw 1vh 2vw;
   border-radius: 0.7vw;
   transition: 0.2s ease;
@@ -240,7 +264,7 @@ h5 {
 .day:hover {
   /* transform: translateY(-3px); */
   cursor: pointer;
-  background-color: #f4f4f4;
+  background-color: var(--color-background);
 }
 
 .active-day {
@@ -249,11 +273,11 @@ h5 {
   display: flex;
   text-align: center;
   align-items: center;
-  background-color: #7A4BFF;
+  background-color: var(--color-active);
   padding: 1vh 2vw 1vh 2vw;
   border-radius: 0.7vw;
   transition: 0.2s ease;
-  color: white;
+  color: var(--color-main);
 }
 
 .active-day h4 {
@@ -266,7 +290,7 @@ h5 {
 }
 
 .active-day p {
-  color: white;
+  color: var(--color-main);
 }
 
 .lessons-content {
@@ -277,7 +301,7 @@ h5 {
   margin-top: 2vw;
   width: 12vw;
   height: 20vw;
-  filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+  filter: drop-shadow(0px 0px 10px var(--color-shadow));
   transition: all .5s ease;
 }
 
@@ -295,7 +319,7 @@ h5 {
 #banner h3{
   position: absolute;
   z-index: 2;
-  color: white;
+  color: var(--color-main);
   left: 1vw;
   top: 1vw;
   width: 9vw;
@@ -304,7 +328,7 @@ h5 {
 .lesson {
   display: block;
   align-items: center;
-  background-color: white;
+  background-color: var(--color-main);
   padding: 1vh 2vw 1vh 2vw;
   border-radius: 0.8vw;
   margin-bottom: 1vw;
@@ -316,13 +340,13 @@ h5 {
 }
 
 .naming p{
-  color: gray;
+  color: var(--color-disable);
   margin-bottom: 5px;
 }
 
 .lesson:hover {
   cursor: pointer;
-  filter: drop-shadow(0 0px 5px rgb(231, 231, 231));
+  filter: drop-shadow(0 0px 5px var(--color-shadow));
 }
 
 .human{
@@ -335,9 +359,18 @@ h5 {
   transition: all 0.1s ease;
 }
 
+span{
+  margin-left: .3vw;
+  background-color: #429d68;
+  color: var(--color-main);
+  padding: 5px;
+  border-radius: .5vw;
+  font-size: .6vw;
+}
+
 @media (max-width: 1000px) {
   body {
-    background-color: #f4f4f4;
+    background-color: var(--color-background);
     margin: 0;
   }
   
@@ -357,7 +390,7 @@ h5 {
     display: block;
     width: 10vw;
     height: 10vw;
-    background-color: white;
+    background-color: var(--color-main);
     border-radius: 3vw;
     border: none;
   }
@@ -367,7 +400,7 @@ h5 {
     width: 100%;
     height: 100%;
     display: none;
-    background-color: #f4f4f4;
+    background-color: var(--color-background);
     padding-left: 8px;
     transition: all .5s ease;
   }
@@ -392,7 +425,7 @@ h5 {
     margin-right: 2vw;
     padding: 50px;
     overflow: hidden;
-    filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+    filter: drop-shadow(0px 0px 10px var(--color-shadow));
   }
   
   .leave{
@@ -417,7 +450,7 @@ h5 {
   }
   
   .nav-bar a{
-    background-color: white;
+    background-color: var(--color-main);
     border-radius: 3vw;
     align-items: center;
     width: auto;
@@ -425,7 +458,7 @@ h5 {
     padding: 5vw;
     text-decoration: none;
     transition: all .2s ease;
-    color: gray;
+    color: var(--color-disable);
     margin-bottom: 20px;
   }
   
@@ -455,12 +488,12 @@ h5 {
   .top-items a p{
     font-size: 5vw;
     font-weight: 100;
-    color: gray;
+    color: var(--color-disable);
     margin-left: 10px;
   }
   
   #active-nav{
-    background-color: white;
+    background-color: var(--color-main);
   }
   
   #active-nav img{
@@ -566,7 +599,7 @@ h5 {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
     font-weight: 200;
-    color: gray;
+    color: var(--color-disable);
   }
   
   #week{
@@ -578,7 +611,7 @@ h5 {
   
   #week:hover {
     font-weight: 200;
-    color: gray;
+    color: var(--color-disable);
   }
   
   .days-row {
@@ -595,7 +628,7 @@ h5 {
     display: block;
     text-align: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--color-main);
     padding: 1vh 2vw 1vh 2vw;
     border-radius: 3vw;
     transition: 0.2s ease;
@@ -608,7 +641,7 @@ h5 {
   .day:hover {
     /* transform: translateY(-3px); */
     cursor: pointer;
-    background-color: #f4f4f4;
+    background-color: var(--color-background);
   }
   
   .active-day {
@@ -617,11 +650,11 @@ h5 {
     display: block;
     text-align: center;
     align-items: center;
-    background-color: #7A4BFF;
+    background-color: var(--color-active);
     padding: 1vh 2vw 1vh 2vw;
     border-radius: 3vw;
     transition: 0.2s ease;
-    color: white;
+    color: var(--color-main);
   }
   
   .active-day h4 {
@@ -634,7 +667,7 @@ h5 {
   }
   
   .active-day p {
-    color: white;
+    color: var(--color-main);
   }
   
   .lessons-content {
@@ -645,7 +678,7 @@ h5 {
     margin-top: 2vw;
     width: 12vw;
     height: 20vw;
-    filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+    filter: drop-shadow(0px 0px 10px var(--color-shadow));
     transition: all .5s ease;
   }
   
@@ -663,7 +696,7 @@ h5 {
   #banner h3{
     position: absolute;
     z-index: 2;
-    color: white;
+    color: var(--color-main);
     left: 1vw;
     top: 1vw;
     width: 9vw;
@@ -672,7 +705,7 @@ h5 {
   .lesson {
     display: block;
     align-items: center;
-    background-color: white;
+    background-color: var(--color-main);
     padding: 1vh 5vw 1vh 5vw;
     border-radius: 3vw;
     margin-bottom: 2vw;
@@ -684,7 +717,7 @@ h5 {
   }
   
   .naming p{
-    color: gray;
+    color: var(--color-disable);
     margin-bottom: 5px;
   }
   
@@ -701,5 +734,14 @@ h5 {
     border-radius: 3vw;
     margin-top: 1vw;
     transition: all 0.1s ease;
+  }
+
+  span{
+    margin-left: 3vw;
+    background-color: #429d68;
+    color: var(--color-main);
+    padding: 5px;
+    border-radius: 2vw;
+    font-size: 3vw;
   }
 }

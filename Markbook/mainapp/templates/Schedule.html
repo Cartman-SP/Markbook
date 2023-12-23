@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="lightmode">
     <button class="menu-button">
       <div class="line"></div>
       <div class="line"></div>
@@ -30,9 +30,10 @@
             <img src="{% static 'imgs/icon-statistics.png' %}" alt="i">
             <p>Статистика</p>
           </a>
-          <a href="">
+          <a href="#" onclick="darkmode()">
             <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
             <p>Тема</p>
+            <span>New</span>
           </a>
         </div>
         <a href="leave/" class="leave">
@@ -61,9 +62,10 @@
               <img src="{% static 'imgs/icon-statistics.png' %}" alt="i">
               <p>Статистика</p>
             </a>
-            <a href="#">
+            <a href="#" onclick="darkmode()">
               <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
               <p>Тема</p>
+              <span>New</span>
             </a>
           </div>
           <a href="leave/" class="leave">
@@ -266,9 +268,9 @@
                                 `;
                 console.log(context[i].check)
                 if(context[i].check=='1'){
-                  div.firstElementChild.style.backgroundColor = 'rgb(163, 246, 182)';
+                  div.firstElementChild.style.backgroundColor = 'var(--color-validate-green)';
                 }else if(context[i].check=='0'){
-                  div.firstElementChild.style.backgroundColor = 'rgb(251, 202, 202)';
+                  div.firstElementChild.style.backgroundColor = 'var(--color-validate-red)';
                 }
                 document.getElementsByClassName("lessons-content")[0].appendChild(div);
               }}
@@ -316,6 +318,20 @@ function check_validate() {
     xmlhttp.send(JSON.stringify({ student_id: sid, date: data }));
 }
 
+//Темная тема
+function darkmode() {
+  var theme = document.getElementsByTagName('body')[0];
+    console.log(theme.classList)
+    if(theme.classList=='lightmode'){
+      theme.classList.remove("lightmode");
+      theme.classList.add("darkmode");
+    }else{
+      theme.classList.remove("darkmode");
+      theme.classList.add("lightmode");
+    }
+}
+
+
 function change_check(clicked, isons) {
     var xmlhttp = new XMLHttpRequest();
     var theUrl = "/checking_change/";
@@ -331,13 +347,13 @@ function change_check(clicked, isons) {
       function checkable(clicked){
         console.log('123'+clicked.style.backgroundColor)
         if(clicked.style.backgroundColor==''){
-          clicked.style.backgroundColor = 'rgb(163, 246, 182)';
+          clicked.style.backgroundColor = 'var(--color-validate-green)';
           create_check(clicked,'1');
-        }else if(clicked.style.backgroundColor=='rgb(163, 246, 182)'){
-          clicked.style.backgroundColor = 'rgb(251, 202, 202)';
+        }else if(clicked.style.backgroundColor=='var(--color-validate-green)'){
+          clicked.style.backgroundColor = 'var(--color-validate-red)';
           change_check(clicked,'0');
         }else{
-          clicked.style.backgroundColor = 'rgb(163, 246, 182)';
+          clicked.style.backgroundColor = 'var(--color-validate-green)';
           change_check(clicked,'1');
         }
         
