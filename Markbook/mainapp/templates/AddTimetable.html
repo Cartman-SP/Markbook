@@ -4,7 +4,7 @@
   <head>
     <link rel="stylesheet" href="{% static 'css/timetable.css' %}" />
     <meta charset="UTF-8" />
-    <title>Markbook | Lessons adding</title>
+    <title>Markbook | Lessons</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/basic-ui-color/37/Tick-1024.png">
@@ -111,6 +111,11 @@
 
     <script>
       CSRF_TOKEN = "{{csrf_token}}"
+
+      function reverse_data(a){
+        a = a.split('.');
+        return a[2]+"."+a[1]+'.'+a[0];
+      }
       function add(){
         name = document.getElementById("name_field").value;
         start = document.getElementById("start-days").value.replace('-','.');
@@ -126,6 +131,11 @@
           var theUrl = "/lessoning/";
           xmlhttp.open("POST", theUrl, true);
           xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+          start = start.replace("-",".");
+          end = end.replace("-",".");
+          start = reverse_data(start);
+          end = reverse_data(end);
+          console.log(end);
           xmlhttp.send(JSON.stringify({ name: name, start: start, end: end, day: day,time: time }));
       }
 

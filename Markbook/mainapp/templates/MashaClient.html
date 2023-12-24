@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="lightmode">
     <button class="menu-button">
       <div class="line"></div>
       <div class="line"></div>
@@ -34,9 +34,10 @@
             <img src="{% static 'imgs/icon-statistics.png' %}" alt="i">
             <p>Статистика</p>
           </a>
-          <a href="#">
+          <a href="#" onclick="darkmode()">
             <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
             <p>Тема</p>
+            <span>New</span>
           </a>
         </div>
         <a href="leave/" class="leave">
@@ -68,9 +69,10 @@
               <img src="{% static 'imgs/icon-statistics.png' %}" alt="i">
               <p>Статистика</p>
             </a>
-            <a href="#">
+            <a href="#" onclick="darkmode()">
               <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
               <p>Тема</p>
+              <span>New</span>
             </a>
           </div>
           <a href="leave/" class="leave">
@@ -314,9 +316,9 @@
                                         `;
                 div.classList.add("human");
                 if(context[i].ison==0 || context[i].ison == false){
-                  div.style.backgroundColor = "'rgb(251, 202, 202)'";
+                  div.style.backgroundColor = "var(--color-validate-red)";
                 }else{
-                  div.style.backgroundColor = 'rgb(163, 246, 182)';
+                  div.style.backgroundColor = 'var(--color-validate-green)';
                 }
                 lesson.getElementsByClassName("students")[0].appendChild(div);
               }
@@ -332,6 +334,18 @@
         }
       }
        
+      //Темная тема
+      function darkmode() {
+        var theme = document.getElementsByTagName('body')[0];
+          console.log(theme.classList)
+          if(theme.classList=='lightmode'){
+            theme.classList.remove("lightmode");
+            theme.classList.add("darkmode");
+          }else{
+            theme.classList.remove("darkmode");
+            theme.classList.add("lightmode");
+          }
+      }
     </script>
   </body>
 </html>
