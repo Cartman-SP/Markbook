@@ -98,7 +98,7 @@ def statistic(request):
     today = datetime.today().strftime('%d.%m.%Y')
     
     for i in range(len(lessons)):
-        sub[lessons[i].name] = math.ceil(difference(today,lessons[i].end_time)/7)
+        sub[lessons[i].name]['all'] = math.ceil(difference(today,lessons[i].end_time)/7)
     print(sub)
     return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
 
