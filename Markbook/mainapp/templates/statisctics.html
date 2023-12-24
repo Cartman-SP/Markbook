@@ -97,83 +97,15 @@
           <div class="active-day">
             <h4>Пропуски</h4>
           </div>
+          <a style="text-decoration: none; color: black;" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
           <div class="day">
-            <h4>test</h4>
-          </div>
+            <h4>Получить автомат</h4>
+          </div> 
+          <a/>
         </div>
 
         <div class="statistic-content">
-          <div class="info">
-            <div class="info-block">
-              <h4>Математика</h4>
-              <table class="charts-css bar show-labels">
-                <tr>
-                  <th scope="row" id="table-th"> Пропуски </th>
-                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Посещения </th>
-                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Занятий </th>
-                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
-                </tr>         
-              </table>
-            </div>
-            <div class="info-block">
-              <h4>Кек</h4>
-              <table class="charts-css bar show-labels">
-                <tr>
-                  <th scope="row" id="table-th"> Пропуски </th>
-                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Посещения </th>
-                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Занятий </th>
-                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
-                </tr>         
-              </table>
-            </div>
           </div>
-          <div class="info">
-            <div class="info-block">
-              <h4>Математика</h4>
-              <table class="charts-css bar show-labels">
-                <tr>
-                  <th scope="row" id="table-th"> Пропуски </th>
-                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Посещения </th>
-                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Занятий </th>
-                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
-                </tr>         
-              </table>
-            </div>
-            <div class="info-block">
-              <h4>Кек</h4>
-              <table class="charts-css bar show-labels">
-                <tr>
-                  <th scope="row" id="table-th"> Пропуски </th>
-                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Посещения </th>
-                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Занятий </th>
-                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
-                </tr>         
-              </table>
-            </div>
           </div>
         </div>
         </div>
@@ -190,6 +122,37 @@
             if (xmlhttp.status == 200) {
               var responseText = xmlhttp.responseText;
               var context = JSON.parse(responseText);
+              console.log(context)
+              counter = 0
+              for(var i in context){
+                if(counter%2==0){
+                  console.log("zhopa")
+                  var div2 = document.createElement("div");
+                  div2.classList.add("info");
+                  document.getElementsByClassName("statistic-content")[0].appendChild(div2);
+                }
+              counter+=1;
+              var div = document.createElement("div");
+              div.classList.add("info-block");
+                div.innerHTML = `
+              <h4>${i}</h4>
+              <table class="charts-css bar show-labels">
+                <tr>
+                  <th scope="row" id="table-th"> Пропуски </th>
+                  <td style="--size: ${context[i].noton/context[i].all}; background-color: rgb(251, 202, 202);" id="table-td"> ${context[i].noton} </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Посещения </th>
+                  <td style="--size: ${context[i].on/context[i].all}; background-color: rgb(163, 246, 182);" id="table-td"> ${context[i].on} </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-th"> Занятий </th>
+                  <td style="--size: 1; background-color: #dadada;" id="table-td"> ${context[i].all} </td>
+                </tr>         
+              </table>       
+              `;
+              document.getElementsByClassName("info")[document.getElementsByClassName("info").length-1].appendChild(div);
+              }
             }
         }
         xmlhttp.open("POST", theUrl, (async = true));

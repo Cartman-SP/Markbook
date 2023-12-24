@@ -89,18 +89,31 @@ def difference(date1, date2):
     difference = date2 - date1
     return difference.days
 
+def same_weekday(date_str1, date_str2, date_format='%d.%m.%Y'):
+    date1 = datetime.strptime(date_str1, date_format)
+    date2 = datetime.strptime(date_str2, date_format)
+    return date1.strftime('%A') == date2.strftime('%A')
+
 def statistic(request):
     context={}
     student = Student.objects.get(id = request.session.get('student_id'))
-    checks = Check.objects.filter(student = student)
     lessons = Lesson.objects.filter()
     sub = {}
     today = datetime.today().strftime('%d.%m.%Y')
-    
+    for i in lessons:
+        sub[i.name] = {}
+        sub[i.name]['all'] = 0
+        sub[i.name]['on'] = 0
+        sub[i.name]['noton'] = 0
     for i in range(len(lessons)):
-        sub[lessons[i].name]['all'] = math.ceil(difference(today,lessons[i].end_time)/7)
+        sub[lessons[i].name]['all'] += difference(lessons[i].start_time,lessons[i].end_time)//7+1
+        sub[lessons[i].name]['on'] += len(Check.objects.filter(student = student, lesson = lessons[i], ison=1))
+        if(difference(today,lessons[i].end_time)>0):
+            sub[lessons[i].name]['noton'] += difference(lessons[i].start_time,today)//7+1 - sub[lessons[i].name]['on']
+        else: #закончились
+            sub[lessons[i].name]['noton'] += difference(lessons[i].start_time,lessons[i].end_time)//7+1 - len(Check.objects.filter(student = student, lesson = lessons[i], ison=1))
     print(sub)
-    return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
+    return HttpResponse(json.dumps(sub, ensure_ascii=False),content_type="application/json")
 
 
 def is_date_in_range(date_to_check, start_date, end_date):
