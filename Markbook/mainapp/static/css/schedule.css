@@ -13,7 +13,7 @@
   --color-validate-green: rgb(36, 68, 44);
   --color-validate-red: rgb(134, 68, 68);
   --color-shadow: rgb(26, 26, 26);
-  --color-text: white;
+  --color-text: rgb(136, 136, 136);
   --color-background: #0e0e0e;
   --color-main: rgb(22, 22, 22);
   --color-disable: gray;
@@ -25,6 +25,7 @@ body {
   font-family: "Montserrat";
   background-color: var(--color-background);
   margin: 0;
+  transition: all .2s ease;
 }
 
 .application {
@@ -47,10 +48,10 @@ body {
   align-items: center;
   background-color: var(--color-main);
   border-radius: 0.7vw;
-  transition: 0.2s ease;
   margin-right: 2vw;
   overflow: hidden;
   filter: drop-shadow(0px 0px 10px var(--color-shadow));
+  transition: all .2s ease;
 }
 
 .leave{
@@ -215,6 +216,7 @@ h5 {
   filter: drop-shadow(0px 0px 10px var(--color-shadow));
   padding: .2vw;
   border-radius: 0.7vw;
+  transition: all .2s ease;
 }
 
 #week h4 {
@@ -297,7 +299,7 @@ h5 {
 }
 
 .lessons-content {
-  margin-top: 5vh;
+  margin-top: 2vh;
 }
 
 #banner{
@@ -306,7 +308,7 @@ h5 {
   width: 12vw;
   height: 4.7vw;
   filter: drop-shadow(0px 0px 10px var(--color-shadow));
-  transition: all .8s ease;
+  transition: all .2s ease;
 }
 
 #banner:hover{
@@ -337,7 +339,7 @@ h5 {
   padding: 1vh 2vw 1vh 2vw;
   border-radius: 0.8vw;
   margin-bottom: 1vw;
-  transition: all 0.1s ease;
+  transition: all .2s ease;
 }
 
 .naming {
@@ -397,7 +399,7 @@ span{
     display: none;
     background-color: var(--color-background);
     padding-left: 8px;
-    transition: all .5s ease;
+    transition: all .2s ease;
   }
 
   .line{
@@ -677,7 +679,7 @@ span{
     width: 12vw;
     height: 20vw;
     filter: drop-shadow(0px 0px 10px var(--color-shadow));
-    transition: all .5s ease;
+    transition: all .2s ease;
   }
   
   #banner:hover{
@@ -707,7 +709,7 @@ span{
     padding: 1vh 5vw 1vh 5vw;
     border-radius: 3vw;
     margin-bottom: 2vw;
-    transition: all 0.1s ease;
+    transition: all .2s ease;
   }
   
   .naming {
