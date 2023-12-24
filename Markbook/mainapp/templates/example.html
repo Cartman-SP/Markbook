@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/timetable.css' %}" />
+    <meta charset="UTF-8" />
+    <title>Markbook | Lessons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/basic-ui-color/37/Tick-1024.png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="content">
+        <div class="header">
+          <h1>Добавление нового предмета</h1>
+          <a href="/adminschedule/">
+            <p>Back</p>
+          </a>
+        </div>
+        <div class="table-editor">
+            <table >
+                <tr>
+                    <th>Название предмета</th>
+                    <th>Даты проведения в семестре</th>
+                    <th>День проведения</th>
+                    <th>Время проведения</th>
+                    <th>Тип пары</th>
+                </tr> <!--ряд с ячейками заголовков-->
+                <tr>
+                    <td>
+                        <input type="text" id="name_field">
+                    </td>
+                    <td>
+                        <div class="column">
+                            <p>Начало</p>
+                            <input type="date" id="start-days">
+                        </div>
+                        <div class="column">
+                            <p>Окончание</p>
+                            <input type="date" id="end-days">
+                        </div>
+                    </td>
+                    <td>
+                      <select id="day-select">
+                        <option value="">Day</option>
+                        <option value="Пн">Пн</option>
+                        <option value="Вт">Вт</option>
+                        <option value="Ср">Ср</option>
+                        <option value="Чт">Чт</option>
+                        <option value="Пт">Пт</option>
+                        <option value="Сб">Сб</option>
+                        <option value="Вс">Вс</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select id="time-select">
+                        <option value="">Time</option>
+                        <option value="8:30-10:10">8:30-10:10</option>
+                        <option value="10:20-12:00">10:20-12:00</option>
+                        <option value="12:20-14:00">12:20-14:00</option>
+                        <option value="14:10-15:50">14:10-15:50</option>
+                        <option value="16:00-17:40">16:00-17:40</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select id="type-select">
+                        <option value="">type</option>
+                        <option value="Семинар">Семинар</option>
+                        <option value="Лекция">Лекция</option>
+                        <option value="Лаба">Лаба</option>
+                        <option value="Другое">Другое</option>
+                      </select>
+                    </td>
+                </tr> <!--ряд с ячейками тела таблицы-->
+            </table>
+            <button id="add" onclick="add()">
+              Подтвердить и Добавить
+            </button>
+            <button id="clean">
+              Очистить форму
+            </button>
+        </div>
+        <div class="header">
+          <h1>Существующие предметы</h1>
+        </div>
+        <div class="lessons-content">
+          {% for o in lessons %}
+            <div class="lesson">
+              <div class="naming">
+                <p>{{o.time}}</p>
+                <h4>{{o.name}}</h4>
+                <h1 visibility: hidden>{{o.id}}</h1>
+              </div>
+              <div class="arrow-button"></div>
+              <div class="delete_button" onclick="deleter(this)">
+                <img
+                id="delete"
+                src="{% static 'imgs/icon-trash.png' %}"
+                alt="trashcan"
+                />
+              </div>
+            </div>
+           {% endfor %}
+          </div>
+        </div>
+    </div>
+
+    <script>
+      CSRF_TOKEN = "{{csrf_token}}"
+
+      function reverse_data(a){
+        a = a.split('.');
+        return a[2]+"."+a[1]+'.'+a[0];
+      }
+      function add(){
+        name = document.getElementById("name_field").value;
+        start = document.getElementById("start-days").value.replace('-','.');
+        end = document.getElementById("end-days").value.replace('-','.');
+        day = document.getElementById("day-select").value;
+        time = document.getElementById("time-select").value;
+        create_lesson(name,start,end,day,time);
+        online_lesson(name,start,end,day,time);
+      }
+
+      function create_lesson(name,start,end,day,time){
+          var xmlhttp = new XMLHttpRequest();
+          var theUrl = "/lessoning/";
+          xmlhttp.open("POST", theUrl, true);
+          xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+          start = start.replace("-",".");
+          end = end.replace("-",".");
+          start = reverse_data(start);
+          end = reverse_data(end);
+          console.log(end);
+          xmlhttp.send(JSON.stringify({ name: name, start: start, end: end, day: day,time: time }));
+      }
+
+      function deleter(but){
+        var needtodelete = confirm("Вы уверены, что хотите удалить пару?");
+        if(needtodelete){
+                  lesson = but.closest('div[class="lesson"]');
+                  var xmlhttp = new XMLHttpRequest();
+                  var theUrl = "/deleting/";
+                  xmlhttp.open("POST", theUrl, true);
+                  xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+                  xmlhttp.send(JSON.stringify({ id: lesson.getElementsByTagName("h1")[0].innerHTML}));
+                  lesson.remove();
+        }
+      }
+
+      function online_lesson(name,start,end,day,time){
+                var div = document.createElement("div");
+                div.innerHTML = `
+                                  <div class="lesson"">
+                                    <div class="naming">
+                                      <p>${time}</p>
+                                      <h4>${name}</h4>
+                                    </div>
+                                    <div class="arrow-button"></div>
+                                    <div class="delete_button" onclick="deleter(this)">
+                                      <img
+                                      id="delete"
+                                      src="{% static 'imgs/icon-trash.png' %}"
+                                      alt="trashcan"
+                                      />
+                                    </div>
+                                  </div>
+                                `;
+                document.getElementsByClassName("lessons-content")[0].appendChild(div);
+      }
+    </script>
+  </body>
+</html>

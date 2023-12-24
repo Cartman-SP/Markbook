@@ -13,7 +13,7 @@
   --color-validate-green: rgb(36, 68, 44);
   --color-validate-red: rgb(134, 68, 68);
   --color-shadow: rgb(26, 26, 26);
-  --color-text: white;
+  --color-text: rgb(136, 136, 136);
   --color-background: #0e0e0e;
   --color-main: rgb(22, 22, 22);
   --color-disable: gray;
@@ -25,6 +25,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-background);
   margin: 0;
+  transition: all .2s ease;
 }
 
 .application {
@@ -51,6 +52,7 @@ body {
   margin-right: 2vw;
   overflow: hidden;
   filter: drop-shadow(0px 0px 10px var(--color-shadow));
+  transition: all .2s ease;
 }
 
 .leave{
@@ -82,6 +84,7 @@ body {
   text-decoration: none;
   transition: all .2s ease;
   color: var(--color-disable);
+  transition: all .2s ease;
 }
 
 .nav-bar a p{
@@ -212,6 +215,7 @@ h5 {
   filter: drop-shadow(0px 0px 10px var(--color-shadow));
   padding: .2vw;
   border-radius: 0.7vw;
+  transition: all .2s ease;
 }
 
 #week h4 {
