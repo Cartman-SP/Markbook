@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
   </head>
-  <body class="lightmode">
+  <body class={{theme}}>
     <button class="menu-button">
       <div class="line"></div>
       <div class="line"></div>
@@ -172,6 +172,7 @@
     <script>
       var CSRF_TOKEN = "{{ csrf_token }}";
       var today = new Date();
+      var themer = "{{theme}}"
       var week = [
         document.getElementById("Mon"),
         document.getElementById("Tue"),
@@ -229,6 +230,7 @@
         week2[today.getDay()].classList.remove("day");
         week2[today.getDay()].classList.add("active-day");
         gettable(week2[today.getDay()].getElementsByTagName("h3")[0].innerHTML,week2[today.getDay()].getElementsByTagName("p")[0].innerHTML);
+        modeenabled();
       }
       window.onload = onPageLoad;
 
@@ -318,11 +320,26 @@ function check_validate() {
     xmlhttp.send(JSON.stringify({ student_id: sid, date: data }));
 }
 
-//Темная тема
-function darkmode() {
+function change_theme(callback){
+  var xmlhttp = new XMLHttpRequest();
+  var theUrl = "/theme/";
+  xmlhttp.onload = function () {
+      if (xmlhttp.status == 200) {
+        var responseText = xmlhttp.responseText;
+        var context = JSON.parse(responseText);
+        console.log(context['theme']);
+        var theme = context.theme;
+        callback(theme);
+      }
+  }
+  xmlhttp.open("POST", theUrl, true);
+  xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+  xmlhttp.send(JSON.stringify({ id: '{{ student_id }}' }));
+}
+
+function modeenabled(){
   var theme = document.getElementsByTagName('body')[0];
-    console.log(theme.classList)
-    if(theme.classList=='lightmode'){
+  if(themer=="darkmode"){
       theme.classList.remove("lightmode");
       theme.classList.add("darkmode");
     }else{
@@ -330,6 +347,23 @@ function darkmode() {
       theme.classList.add("lightmode");
     }
 }
+function darkmode() {
+  var theme = document.getElementsByTagName('body')[0];
+  console.log(theme.classList);
+
+  change_theme(function(themer) { // Исправлено: добавлен аргумент themer в колбэк-функцию
+    console.log(themer);
+
+    if (themer == "darkmode") {
+      theme.classList.remove("lightmode");
+      theme.classList.add("darkmode");
+    } else {
+      theme.classList.remove("darkmode");
+      theme.classList.add("lightmode");
+    }
+  });
+}
+
 
 
 function change_check(clicked, isons) {

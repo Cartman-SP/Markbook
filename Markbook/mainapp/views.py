@@ -21,7 +21,7 @@ def main_page(request):
     context = {}
     if request.session.get("student_id") is None:
         request.session.set_test_cookie()
-        
+        request.session["theme"] = "lightmode"
         if request.method == "POST":
             form = StudentLoginForm(request.POST)
             context['form'] = form
@@ -59,6 +59,7 @@ def tables(request):
         context = {}
         context['username'] = user.firstname
         context['student_id'] = user.id
+        context['theme'] = request.session["theme"]
         return render(request,'Schedule.html',context)
     else:
         return redirect(main_page)
@@ -67,6 +68,7 @@ def tables(request):
 @isadmin
 def adminschedule(request):
     context = {'username':Student.objects.get(id=request.session.get('student_id')).firstname}
+    context['theme'] = request.session["theme"]
     return render(request,'MashaClient.html',context)
 
 @isadmin
@@ -163,6 +165,7 @@ def get_table(request):
 def add_page(request):
     context = {'username':Student.objects.get(id=request.session.get('student_id')).firstname}
     lessons = Lesson.objects.filter()
+    context['theme'] = request.session["theme"]
     context['lessons'] = lessons
     return render(request,"AddTimetable.html",context)
 
@@ -221,3 +224,15 @@ def student_load(request):
     
 
     return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
+
+def change_theme(request):
+    data = json.loads(request.body.decode('utf-8'))
+    context = {}
+    print(request.session["theme"])
+    if(request.session["theme"]=="lightmode"):
+        request.session["theme"]="darkmode"
+    else:
+        request.session["theme"]="lightmode"
+    context['theme'] = request.session["theme"]
+    return HttpResponse(json.dumps(context, ensure_ascii=False),content_type="application/json")
+

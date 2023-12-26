@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
   </head>
-  <body class="lightmode">
+  <body class={{theme}}>
     <div class="content">
       <button class="menu-button">
         <div class="line"></div>
@@ -186,7 +186,7 @@
 
     <script>
       CSRF_TOKEN = "{{csrf_token}}"
-
+      var themer = "{{theme}}"
       function reverse_data(a){
         a = a.split('.');
         return a[2]+"."+a[1]+'.'+a[0];
@@ -248,18 +248,49 @@
                 document.getElementsByClassName("lessons-content")[0].appendChild(div);
       }
 
-      //Темная тема
-      function darkmode() {
-        var theme = document.getElementsByTagName('body')[0];
-          console.log(theme.classList)
-          if(theme.classList=='lightmode'){
-            theme.classList.remove("lightmode");
-            theme.classList.add("darkmode");
-          }else{
-            theme.classList.remove("darkmode");
-            theme.classList.add("lightmode");
-          }
+      function change_theme(callback){
+  var xmlhttp = new XMLHttpRequest();
+  var theUrl = "/theme/";
+  xmlhttp.onload = function () {
+      if (xmlhttp.status == 200) {
+        var responseText = xmlhttp.responseText;
+        var context = JSON.parse(responseText);
+        console.log(context['theme']);
+        var theme = context.theme;
+        callback(theme);
       }
+  }
+  xmlhttp.open("POST", theUrl, true);
+  xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+  xmlhttp.send(JSON.stringify({ id: '{{ student_id }}' }));
+}
+
+function modeenabled(){
+  var theme = document.getElementsByTagName('body')[0];
+  if(themer=="darkmode"){
+      theme.classList.remove("lightmode");
+      theme.classList.add("darkmode");
+    }else{
+      theme.classList.remove("darkmode");
+      theme.classList.add("lightmode");
+    }
+}
+function darkmode() {
+  var theme = document.getElementsByTagName('body')[0];
+  console.log(theme.classList);
+
+  change_theme(function(themer) { // Исправлено: добавлен аргумент themer в колбэк-функцию
+    console.log(themer);
+
+    if (themer == "darkmode") {
+      theme.classList.remove("lightmode");
+      theme.classList.add("darkmode");
+    } else {
+      theme.classList.remove("darkmode");
+      theme.classList.add("lightmode");
+    }
+  });
+}
     </script>
     <script>
       var dropdown = document.getElementsByClassName("menu-button");
@@ -276,6 +307,9 @@
           }
         });
       } 
+      window.onload = modeenabled;
+      
+
     </script>
   </body>
 </html>
