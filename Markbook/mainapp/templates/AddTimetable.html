@@ -23,6 +23,11 @@
       <div class="dropdown-container" id="mobile">
         <div class="nav-bar">
           <div class="top-items">
+            <a href="#">
+              <img src="{% static 'imgs/icon-user.png' %}" alt="user">
+              <p>{{username}}</p>
+              <span>ИДБ-23-05</span>
+            </a>
             <a href="/adminschedule/">
               <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
               <p>Посещаемость</p>
@@ -38,7 +43,6 @@
             <a href="#" onclick="darkmode()">
               <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
               <p>Тема</p>
-              <span id="tag-new">New</span>
             </a>
           </div>
           <a href="leave/" class="leave">
@@ -58,6 +62,11 @@
           </div>
           <div class="nav-bar" id="desktop">
             <div class="top-items">
+              <a href="#">
+                <img src="{% static 'imgs/icon-user.png' %}" alt="user">
+                <p>{{username}}</p>
+                <span>ИДБ-23-05</span>
+              </a>
               <a href="/adminschedule/">
                 <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
                 <p>Посещаемость</p>
@@ -73,7 +82,6 @@
               <a href="#" onclick="darkmode()">
                 <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
                 <p>Тема</p>
-                <span id="tag-new">New</span>
               </a>
             </div>
             <a href="leave/" class="leave">
@@ -105,7 +113,7 @@
                       <th>Даты в семестре</th>
                       <th>День проведения</th>
                       <th>Время проведения</th>
-                  </tr> <!--ряд с ячейками заголовков-->
+                  </tr>
                   <tr>
                       <td>
                           <input type="text" id="name_field">
@@ -154,7 +162,9 @@
           </div>
           <div class="header">
             <h1>Существующие предметы</h1>
-            <span id="tag-counter">Чмок в носик :)</span>
+
+            <span id="tag-counter">{{lessons}} Предметов</span>
+            
           </div>
           <div class="card">
             

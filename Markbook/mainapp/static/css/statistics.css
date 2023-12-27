@@ -1,6 +1,34 @@
+.lightmode {
+  --color-validate-green: rgb(163, 246, 182);
+  --color-validate-red: rgb(251, 202, 202);
+  --color-validate-gray: #dadada;
+  --color-shadow: rgb(223, 223, 223);
+  --color-text: black;
+  --color-background: #f4f4f4;
+  --color-main: white;
+  --color-disable: gray;
+  --color-active: #7A4BFF;
+}
+
+.darkmode{
+  --color-validate-green: rgb(36, 68, 44);
+  --color-validate-red: rgb(134, 68, 68);
+  --color-validate-gray: #5f5f5f;
+  --color-shadow: rgb(26, 26, 26);
+  --color-text: rgb(136, 136, 136);
+  --color-background: #0e0e0e;
+  --color-main: rgb(22, 22, 22);
+  --color-disable: gray;
+  --color-active: #7A4BFF;
+}
+
+
 body {
-    background-color: #f4f4f4;
+    background-color: var(--color-background);
     margin: 0;
+    font-family: "Montserrat";
+    color: var(--color-text);
+    transition: all .2s ease;
   }
 
   .application {
@@ -21,12 +49,12 @@ body {
     display: block;
     text-align: left;
     align-items: center;
-    background-color: white;
+    background-color: var(--color-main);
     border-radius: 0.7vw;
     transition: 0.2s ease;
     margin-right: 2vw;
     overflow: hidden;
-    filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+    filter: drop-shadow(0px 0px 10px var(--color-shadow));
   }
   
   .leave{
@@ -90,7 +118,7 @@ body {
   }
   
   #active-nav{
-    background-color: #f4f4f4;
+    background-color: var(--color-background);
   }
   
   #active-nav img{
@@ -184,10 +212,11 @@ body {
     display: flex;
     justify-content: start;
     align-items: center;
-    background-color: white;
-    filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+    background-color: var(--color-main);
+    filter: drop-shadow(0px 0px 10px var(--color-shadow));
     padding: .2vw;
     border-radius: 0.7vw;
+    transition: all .2s ease;
   }
   
   .days-row {
@@ -204,7 +233,7 @@ body {
     display: block;
     text-align: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--color-main);
     padding: 1vh 2vw 1vh 2vw;
     border-radius: 0.7vw;
     transition: 0.2s ease;
@@ -213,7 +242,7 @@ body {
   .day:hover {
     /* transform: translateY(-3px); */
     cursor: pointer;
-    background-color: #f4f4f4;
+    background-color: var(--color-background);
   }
   
   .active-day {
@@ -226,7 +255,7 @@ body {
     padding: 1vh 2vw 1vh 2vw;
     border-radius: 0.7vw;
     transition: 0.2s ease;
-    color: white;
+    color: var(--color-main);
   }
   
   .active-day h4 {
@@ -239,7 +268,7 @@ body {
   }
   
   .active-day p {
-    color: white;
+    color: var(--color-main);
   }
   
   .info{
@@ -250,9 +279,11 @@ body {
 
   .info-block{
     width: 21vw;
-    background-color: white;
+    background-color: var(--color-main);
     padding: 2vh 4vw 2vh 2vw;
     border-radius: 0.7vw;
+    transition: all .2s ease;
+    filter: drop-shadow(0px 0px 10px var(--color-shadow));
   }
 
   .info-block h4{
@@ -264,7 +295,7 @@ body {
     margin-top: 2vw;
     width: 12vw;
     height: 20vw;
-    filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+    filter: drop-shadow(0px 0px 10px var(--color-shadow));
     transition: all .5s ease;
   }
   
@@ -282,7 +313,7 @@ body {
   #banner h3{
     position: absolute;
     z-index: 2;
-    color: white;
+    color: var(--color-main);
     left: 1vw;
     top: 1vw;
     width: 9vw;
@@ -291,6 +322,7 @@ body {
   table tr td {
     transform-origin: left;
     animation: revealing-bars 2s linear;
+    transition: all .2s ease;
   }
   @keyframes revealing-bars {
     0%  { transform: scaleX( 0 ); }
@@ -311,10 +343,63 @@ body {
     margin-left: 2vw;
   }
 
+  span{
+    margin-left: .3vw;
+    background-color: #429d68;
+    color: var(--color-main);
+    padding: 5px;
+    border-radius: .5vw;
+    font-size: .6vw;
+    transition: all .2s ease;
+  }
+
+  .lessons-content {
+    margin-top: 2vh;
+  }
+
+  .lesson {
+    display: block;
+    align-items: center;
+    background-color: var(--color-main);
+    padding: 1vh 2vw 1vh 2vw;
+    border-radius: 0.8vw;
+    margin-bottom: 1vw;
+    transition: all 0.2s ease;
+  }
+
+  .naming{
+    margin-bottom: 1vw;
+  }
+
+  .student{
+    padding: 1vh 1vw 1vh 1vw;
+    border-radius: 0.8vw;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-main);
+    transition: all .2s ease;
+  }
+
+  .student:hover{
+    background-color: var(--color-background);
+  }
+
+  .visiting{
+    display: flex;
+  }
+
+  .visiting h4{
+    margin-left: 2vw;
+  }
+
+  .visiting p{
+    margin-left: .5vw;
+    font-weight: bold;
+  }
   
   @media (max-width: 1000px) {
     body {
-      background-color: #f4f4f4;
+      background-color: var(--color-background);
       margin: 0;
     }
     
@@ -334,7 +419,7 @@ body {
       display: block;
       width: 10vw;
       height: 10vw;
-      background-color: white;
+      background-color: var(--color-main);
       border-radius: 3vw;
       border: none;
     }
@@ -344,7 +429,7 @@ body {
       width: 100%;
       height: 100%;
       display: none;
-      background-color: #f4f4f4;
+      background-color: var(--color-background);
       padding-left: 8px;
       transition: all .5s ease;
     }
@@ -369,7 +454,7 @@ body {
       margin-right: 2vw;
       padding: 50px;
       overflow: hidden;
-      filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+      filter: drop-shadow(0px 0px 10px var(--color-shadow));
     }
     
     .leave{
@@ -394,7 +479,7 @@ body {
     }
     
     .nav-bar a{
-      background-color: white;
+      background-color: var(--color-main);
       border-radius: 3vw;
       align-items: center;
       width: auto;
@@ -437,7 +522,7 @@ body {
     }
     
     #active-nav{
-      background-color: white;
+      background-color: var(--color-main);
     }
     
     #active-nav img{
@@ -574,7 +659,7 @@ body {
       display: block;
       text-align: center;
       align-items: center;
-      background-color: white;
+      background-color: var(--color-main);
       padding: 1vh 2vw 1vh 2vw;
       border-radius: 3vw;
       transition: 0.2s ease;
@@ -587,7 +672,7 @@ body {
     .day:hover {
       /* transform: translateY(-3px); */
       cursor: pointer;
-      background-color: #f4f4f4;
+      background-color: var(--color-background);
     }
     
     .active-day {
@@ -600,7 +685,7 @@ body {
       padding: 1vh 2vw 1vh 2vw;
       border-radius: 3vw;
       transition: 0.2s ease;
-      color: white;
+      color: var(--color-main);
     }
     
     .active-day h4 {
@@ -613,14 +698,14 @@ body {
     }
     
     .active-day p {
-      color: white;
+      color: var(--color-main);
     }
     
     #banner{
       margin-top: 2vw;
       width: 12vw;
       height: 20vw;
-      filter: drop-shadow(0px 0px 10px rgb(223, 223, 223));
+      filter: drop-shadow(0px 0px 10px var(--color-shadow));
       transition: all .5s ease;
     }
     
@@ -638,7 +723,7 @@ body {
     #banner h3{
       position: absolute;
       z-index: 2;
-      color: white;
+      color: var(--color-main);
       left: 1vw;
       top: 1vw;
       width: 9vw;
@@ -669,7 +754,7 @@ body {
     .info-block{
       margin-top: 5vw;
       width: auto;
-      background-color: white;
+      background-color: var(--color-main);
       padding: 2vh 2vw 2vh 2vw;
       border-radius: 3vw;
     }
@@ -691,6 +776,65 @@ body {
       margin-bottom: 10px;
       margin-top: 10px;
       max-width: -moz-available;
+    }
+
+    span{
+      margin-left: 3vw;
+      background-color: #429d68;
+      color: var(--color-main);
+      padding: 5px;
+      border-radius: 2vw;
+      font-size: 3vw;
+    }
+
+    .lessons-content {
+      margin-top: 2vh;
+    }
+  
+    .lesson {
+      display: block;
+      align-items: center;
+      background-color: var(--color-main);
+      padding: 1vh 2vw 1vh 2vw;
+      border-radius: 3vw;
+      margin-bottom: 1vw;
+      transition: all 0.2s ease;
+    }
+  
+    .naming{
+      margin-bottom: 1vw;
+    }
+  
+    .student{
+      padding: 1vh 1vw 1vh 1vw;
+      border-radius: 3vw;
+      display: flex;
+      justify-content: space-between;
+      background-color: var(--color-main);
+      transition: all .2s ease;
+    }
+
+    .student h4{
+      font-size: 3vw;
+    }
+  
+    .student:hover{
+      background-color: var(--color-background);
+    }
+  
+    .visiting{
+      display: flex;
+    }
+  
+    .visiting h4{
+      margin-left: 2vw;
+      font-size: 3vw;
+    }
+  
+    .visiting p{
+      margin-left: .5vw;
+      font-weight: bold;
+      font-size: 3vw;
     }
   }
   

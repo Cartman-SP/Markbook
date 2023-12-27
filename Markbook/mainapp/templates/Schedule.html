@@ -22,6 +22,11 @@
     <div class="dropdown-container" id="mobile">
       <div class="nav-bar">
         <div class="top-items">
+          <a href="#">
+            <img src="{% static 'imgs/icon-user.png' %}" alt="user">
+            <p>{{username}}</p>
+            <span>ИДБ-23-05</span>
+          </a>
           <a href="#" id="active-nav">
             <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
             <p>Посещения</p>
@@ -33,7 +38,6 @@
           <a href="#" onclick="darkmode()">
             <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
             <p>Тема</p>
-            <span>New</span>
           </a>
         </div>
         <a href="leave/" class="leave">
@@ -47,13 +51,17 @@
       </div>
     </div>
     <div class="application">
-      
       <div>
         <div class="header" style="visibility: hidden;" id="Margin">
           <h1>*</h1>
         </div>
         <div class="nav-bar" id="desktop">
           <div class="top-items">
+            <a href="#">
+              <img src="{% static 'imgs/icon-user.png' %}" alt="user">
+              <p>{{username}}</p>
+              <span>ИДБ-23-05</span>
+            </a>
             <a href="#" id="active-nav">
               <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
               <p>Посещения</p>
@@ -65,7 +73,6 @@
             <a href="#" onclick="darkmode()">
               <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
               <p>Тема</p>
-              <span>New</span>
             </a>
           </div>
           <a href="leave/" class="leave">
@@ -82,62 +89,66 @@
           <h3>Welcome to Markbook!</h3>
         </div>
       </div>
-
       
       <div class="content">
         <div class="header">
           <h1>Посещения</h1>
-          <div class="user">
-            <img
+          <div class="month">
+            <img src="{% static 'imgs/icon-calendar.png' %}" alt="">
+            <h3>Январь</h3>
+            <!-- <img
                 src="{% static 'imgs/icon-user.png' %}"
                 alt="user"
-              />
-            <h3>{{username}}</h3>
+              /> -->
+            <!-- <h3>{{username}}</h3> -->
           </div>
         </div>
-        <div class="calendar">
-          <div class="day" id="week" onclick="weekchange(-7)" style="margin: 0 .5vw 0 0;">
-            <h4><</h4>
-          </div>
-          <div class="day" id="Mon" onclick="choose(this)">
-            <p>Пн</p>
-            <h4></h4>
-            <h3 visibility: hidden>12312</h3>
-          </div>
-          <div class="day" id="Tue" onclick="choose(this)">
-            <p>Вт</p>
-            <h4></h4>
-            <h3 visibility: hidden>12312</h3>
-          </div>
-          <div class="day" id="Wed" onclick="choose(this)">
-            <p>Ср</p>
-            <h4></h4>
-            <h3 visibility: hidden>12312</h3>
-          </div>
-          <div class="day" id="Thu" onclick="choose(this)">
-            <p>Чт</p>
-            <h4></h4>
-            <h3 visibility: hidden>12312</h3>
-          </div>
-          <div class="day" id="Fri" onclick="choose(this)">
-            <p>Пт</p>
-            <h4></h4>
-            <h3 visibility: hidden>12312</h3>
-          </div>
-          <div class="day" id="Sat" onclick="choose(this)">
-            <p>Сб</p>
-            <h4></h4>
-            <h3 visibility: hidden>12312</h3>
-          </div>
-          <div class="day" id="Sun" onclick="choose(this)">
-            <p>Вс</p>
-            <h4></h4>
-            <h3 visibility: hidden>12312</h3>
-          </div>
-          <div class="day" id="week" onclick="weekchange(7)" style="margin: 0 0 0 .5vw;">
-            <h4>></h4>
+        <div>
+          <div class="calendar">
+            <div class="day" id="week" onclick="weekchange(-7)" style="margin: 0 .5vw 0 0;">
+              <h4><</h4>
+            </div>
+            <div class="day" id="Mon" onclick="choose(this)">
+              <p>Пн</p>
+              <h4></h4>
+              <h3 visibility: hidden>12312</h3>
+            </div>
+            <div class="day" id="Tue" onclick="choose(this)">
+              <p>Вт</p>
+              <h4></h4>
+              <h3 visibility: hidden>12312</h3>
+            </div>
+            <div class="day" id="Wed" onclick="choose(this)">
+              <p>Ср</p>
+              <h4></h4>
+              <h3 visibility: hidden>12312</h3>
+            </div>
+            <div class="day" id="Thu" onclick="choose(this)">
+              <p>Чт</p>
+              <h4></h4>
+              <h3 visibility: hidden>12312</h3>
+            </div>
+            <div class="day" id="Fri" onclick="choose(this)">
+              <p>Пт</p>
+              <h4></h4>
+              <h3 visibility: hidden>12312</h3>
+            </div>
+            <div class="day" id="Sat" onclick="choose(this)">
+              <p>Сб</p>
+              <h4></h4>
+              <h3 visibility: hidden>12312</h3>
+            </div>
+            <div class="day" id="Sun" onclick="choose(this)">
+              <p>Вс</p>
+              <h4></h4>
+              <h3 visibility: hidden>12312</h3>
+            </div>
+            <div class="day" id="week" onclick="weekchange(7)" style="margin: 0 0 0 .5vw;">
+              <h4>></h4>
+            </div>
           </div>
         </div>
+        
   
         
         <!-- sample table -->

@@ -22,6 +22,11 @@
     <div class="dropdown-container" id="mobile">
       <div class="nav-bar">
         <div class="top-items">
+          <a href="#">
+            <img src="{% static 'imgs/icon-user.png' %}" alt="user">
+            <p>{{username}}</p>
+            <span>ИДБ-23-05</span>
+          </a>
           <a href="/adminschedule/" id="active-nav">
             <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
             <p>Посещаемость</p>
@@ -37,7 +42,6 @@
           <a href="#" onclick="darkmode()">
             <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
             <p>Тема</p>
-            <span>New</span>
           </a>
         </div>
         <a href="leave/" class="leave">
@@ -57,6 +61,11 @@
         </div>
         <div class="nav-bar" id="desktop">
           <div class="top-items">
+            <a href="#">
+              <img src="{% static 'imgs/icon-user.png' %}" alt="user">
+              <p>{{username}}</p>
+              <span>ИДБ-23-05</span>
+            </a>
             <a href="#" id="active-nav">
               <img src="{% static 'imgs/icon-timetable.png' %}" alt="i">
               <p>Посещаемость</p>
@@ -72,7 +81,6 @@
             <a href="#" onclick="darkmode()">
               <img src="{% static 'imgs/icon-theme.png' %}" alt="i">
               <p>Тема</p>
-              <span>New</span>
             </a>
           </div>
           <a href="leave/" class="leave">
@@ -89,11 +97,13 @@
         <div class="header">
           <h1>Посещаемость</h1>
           <div class="user">
-            <img
+            <img src="{% static 'imgs/icon-calendar.png' %}" alt="">
+            <h3>Январь</h3>
+            <!-- <img
                 src="{% static 'imgs/icon-user.png' %}"
                 alt="user"
-              />
-            <h3>{{username}}</h3>
+              /> -->
+            <!-- <h3>{{username}}</h3> -->
           </div>
         </div>
         <div class="calendar">

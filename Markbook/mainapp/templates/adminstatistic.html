@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
 
   </head>
-  <body>
+  <body class={{theme}}>
     <button class="menu-button">
       <div class="line"></div>
       <div class="line"></div>
@@ -28,6 +28,11 @@
     <div class="dropdown-container" id="mobile">
       <div class="nav-bar">
         <div class="top-items">
+          <a href="#">
+            <img src="{% static 'imgs/icon-user.png' %}" alt="user">
+            <p>{{username}}</p>
+            <span>ИДБ-23-05</span>
+          </a>
           <a href="/adminschedule">
             <img src="{% static 'imgs/icon-timetable.png' %}" alt="i" />
             <p>Посещаемость</p>
@@ -40,7 +45,7 @@
             <img src="{% static 'imgs/icon-statistics.png' %}" alt="i" />
             <p>Статистика</p>
           </a>
-          <a href="">
+          <a href="#" onclick="darkmode()">
             <img src="{% static 'imgs/icon-theme.png' %}" alt="i" />
             <p>Тема</p>
           </a>
@@ -58,6 +63,11 @@
         </div>
         <div class="nav-bar" id="desktop">
           <div class="top-items">
+            <a href="#">
+              <img src="{% static 'imgs/icon-user.png' %}" alt="user">
+              <p>{{username}}</p>
+              <span>ИДБ-23-05</span>
+            </a>
             <a href="/adminschedule">
               <img src="{% static 'imgs/icon-timetable.png' %}" alt="i" />
               <p>Посещаемость</p>
@@ -70,7 +80,7 @@
               <img src="{% static 'imgs/icon-statistics.png' %}" alt="i" />
               <p>Статистика</p>
             </a>
-            <a href="#">
+            <a href="#" onclick="darkmode()">
               <img src="{% static 'imgs/icon-theme.png' %}" alt="i" />
               <p>Тема</p>
             </a>
@@ -103,84 +113,36 @@
         </div>
         <div class="statistics-menu">
           <div class="active-day">
-            <h4>Пропуски</h4>
+            <h4>По предметам</h4>
           </div>
           <div class="day">
-            <h4>test</h4>
+            <h4>На чай разрабам (пока не доступно)</h4>
           </div>
         </div>
 
-        <div class="statistic-content">
-          <div class="info">
-            <div class="info-block">
-              <h4>Математика</h4>
-              <table class="charts-css bar show-labels">
-                <tr>
-                  <th scope="row" id="table-th"> Пропуски </th>
-                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Посещения </th>
-                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Занятий </th>
-                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
-                </tr>         
-              </table>
+        <div class="lessons-content">
+          <div class="lesson">
+            <div class="naming">
+              <p>Предмет</p>
+              <h4>Программирование</h4>
             </div>
-            <div class="info-block">
-              <h4>Кек</h4>
-              <table class="charts-css bar show-labels">
-                <tr>
-                  <th scope="row" id="table-th"> Пропуски </th>
-                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Посещения </th>
-                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Занятий </th>
-                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
-                </tr>         
-              </table>
+            <div class="student">
+              <h4>Аль-Агабани Н.</h4>
+              <div class="visiting">
+                <h4>Пропущено</h4>
+                <p style="color: red;" id="missed">5</p>
+                <h4>Посещений</h4>
+                <p style="color: green;" id="visits">0</p>
+              </div>
             </div>
-          </div>
-          <div class="info">
-            <div class="info-block">
-              <h4>Математика</h4>
-              <table class="charts-css bar show-labels">
-                <tr>
-                  <th scope="row" id="table-th"> Пропуски </th>
-                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Посещения </th>
-                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Занятий </th>
-                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
-                </tr>         
-              </table>
-            </div>
-            <div class="info-block">
-              <h4>Кек</h4>
-              <table class="charts-css bar show-labels">
-                <tr>
-                  <th scope="row" id="table-th"> Пропуски </th>
-                  <td style="--size: 0.3; background-color: rgb(251, 202, 202);" id="table-td"> 3 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Посещения </th>
-                  <td style="--size: 0.7; background-color: rgb(163, 246, 182);" id="table-td"> 7 </td>
-                </tr>
-                <tr>
-                  <th scope="row" id="table-th"> Занятий </th>
-                  <td style="--size: 1; background-color: #dadada;" id="table-td"> 10 </td>
-                </tr>         
-              </table>
+            <div class="student">
+              <h4>Никифоров А.</h4>
+              <div class="visiting">
+                <h4>Пропущено</h4>
+                <p style="color: red;" id="missed">89</p>
+                <h4>Посещений</h4>
+                <p style="color: green;" id="visits">5</p>
+              </div>
             </div>
           </div>
         </div>
@@ -189,6 +151,8 @@
     </div>
 
     <script>
+      var CSRF_TOKEN = "{{ csrf_token }}";
+      var themer = "{{theme}}";
       var dropdown = document.getElementsByClassName("menu-button");
       var i;
       var tableContent = document.getElementsByClassName("statistic-content");
@@ -206,6 +170,50 @@
           }
         });
       }
+
+      function change_theme(callback){
+  var xmlhttp = new XMLHttpRequest();
+  var theUrl = "/theme/";
+  xmlhttp.onload = function () {
+      if (xmlhttp.status == 200) {
+        var responseText = xmlhttp.responseText;
+        var context = JSON.parse(responseText);
+        console.log(context['theme']);
+        var theme = context.theme;
+        callback(theme);
+      }
+  }
+  xmlhttp.open("POST", theUrl, true);
+  xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+  xmlhttp.send(JSON.stringify({ id: '{{ student_id }}' }));
+}
+
+function modeenabled(){
+  var theme = document.getElementsByTagName('body')[0];
+  if(themer=="darkmode"){
+      theme.classList.remove("lightmode");
+      theme.classList.add("darkmode");
+    }else{
+      theme.classList.remove("darkmode");
+      theme.classList.add("lightmode");
+    }
+}
+function darkmode() {
+  var theme = document.getElementsByTagName('body')[0];
+  console.log(theme.classList);
+
+  change_theme(function(themer) { // Исправлено: добавлен аргумент themer в колбэк-функцию
+    console.log(themer);
+
+    if (themer == "darkmode") {
+      theme.classList.remove("lightmode");
+      theme.classList.add("darkmode");
+    } else {
+      theme.classList.remove("darkmode");
+      theme.classList.add("lightmode");
+    }
+  });
+}
     </script>
   </body>
 </html>

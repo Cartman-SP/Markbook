@@ -131,13 +131,13 @@ body {
   margin-bottom: 20px;
 }
 
-.user {
+.month {
   display: flex;
   align-items: center;
 }
 
-.user img{
-  width: 1vw;
+.month img{
+  width: 1.3vw;
   margin-right: 10px;
 }
 
@@ -152,6 +152,7 @@ p {
   font-family: "Montserrat";
   font-size: 0.8vw;
   margin: 0;
+  transition: all .2s ease;
 }
 
 h4 {
@@ -363,6 +364,7 @@ span{
   padding: 5px;
   border-radius: .5vw;
   font-size: .6vw;
+  transition: all .2s ease;
 }
 
 @media (max-width: 1000px) {
@@ -506,12 +508,12 @@ span{
     margin-bottom: 5vw;
   }
   
-  .user {
+  .month {
     display: flex;
     align-items: center;
   }
   
-  .user img{
+  .month img{
     width: 5vw;
     margin-right: 10px;
   }
@@ -612,7 +614,7 @@ span{
     font-weight: 200;
     color: var(--color-disable);
   }
-  
+
   .days-row {
     justify-content: center;
     vertical-align: middle;

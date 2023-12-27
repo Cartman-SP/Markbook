@@ -64,7 +64,6 @@ def tables(request):
     else:
         return redirect(main_page)
 
-
 @isadmin
 def adminschedule(request):
     context = {'username':Student.objects.get(id=request.session.get('student_id')).firstname}
@@ -74,12 +73,14 @@ def adminschedule(request):
 @isadmin
 def adminstatistic(request):
     context = {'username':Student.objects.get(id=request.session.get('student_id')).firstname}
+    context['theme'] = request.session["theme"]
     return render(request,'adminstatistic.html',context)
 
 def statistics(request):
     if request.session.get("student_id") is not None:
         student = Student.objects.get(id=request.session.get('student_id'))
         context = {'username': student.firstname, 'student_id': student.id}
+        context['theme'] = request.session["theme"]
         return render(request,'statisctics.html',context)
     else:
         return redirect("Main")

@@ -446,7 +446,7 @@ h4 {
 
 #tag-counter{
   margin-left: .3vw;
-  background-color: #d885a5;
+  background-color: #2165c5;
   color: var(--color-main);
   padding: 5px;
   border-radius: .5vw;
@@ -455,6 +455,16 @@ h4 {
 
 .content-main{
   display: block;
+}
+
+span{
+  margin-left: .3vw;
+  background-color: #429d68;
+  color: var(--color-main);
+  padding: 5px;
+  border-radius: .5vw;
+  font-size: .6vw;
+  transition: all .2s ease;
 }
 
 @media (max-width: 1000px){
@@ -591,5 +601,14 @@ h4 {
 
   .content-main{
     display: none;
+  }
+
+  span{
+    margin-left: 3vw;
+    background-color: #429d68;
+    color: var(--color-main);
+    padding: 5px;
+    border-radius: 2vw;
+    font-size: 3vw;
   }
 }
