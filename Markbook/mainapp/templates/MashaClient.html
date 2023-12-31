@@ -222,43 +222,35 @@
           newb.classList.add("active-day");
       }
 
-      function onPageLoad() {
-        month_set()
-        var c = 1
-        for (let i = today.getDay(); i < 7; i++) {
-          var h = week[i].getElementsByTagName("h4")[0];
-          var nextDay = new Date(today);
-          nextDay.setDate(today.getDate() + c);
-          var p = week[i].getElementsByTagName("h3")[0];
-          p.innerHTML = `${nextDay.getDate()}.${nextDay.getMonth() + 1}.${nextDay.getFullYear()}`;
-          h.innerHTML = nextDay.getDate();
-          c = c+1;
-        }
-        var c = 1
-        for (let i = today.getDay(); i >= 0; i--) {
-          var h = week[i].getElementsByTagName("h4")[0];
-          var nextDay = new Date(today);
-          nextDay.setDate(today.getDate() + c);
-          var p = week[i].getElementsByTagName("h3")[0];
-          p.innerHTML = `${nextDay.getDate()}.${nextDay.getMonth() + 1}.${nextDay.getFullYear()}`;
-          h.innerHTML = nextDay.getDate();
-          c = c-1;
-        }
+function onPageLoad() {
+    month_set();
 
-        var week2 = [
-          document.getElementById("Sun"),
-          document.getElementById("Mon"),
-          document.getElementById("Tue"),
-          document.getElementById("Wed"),
-          document.getElementById("Thu"),
-          document.getElementById("Fri"),
-          document.getElementById("Sat"),
-        ];
-        week2[today.getDay()].classList.remove("day");
-        week2[today.getDay()].classList.add("active-day");
-        gettable(week2[today.getDay()].getElementsByTagName("h3")[0].innerHTML,week2[today.getDay()].getElementsByTagName("p")[0].innerHTML);
-        modeenabled();
-      }
+    var daysOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
+    var todayIndex = (today.getDay() + 6) % 7;  // Индекс сегодняшнего дня недели
+
+    for (let i = 0; i < 7; i++) {
+        var h = week[i].getElementsByTagName("h4")[0];
+        var nextDay = new Date(today);
+        nextDay.setDate(today.getDate() + i - todayIndex);
+        var p = week[i].getElementsByTagName("h3")[0];
+
+        p.innerHTML = `${nextDay.getDate()}.${nextDay.getMonth() + 1}.${nextDay.getFullYear()}`;
+        h.innerHTML = (nextDay.getDate() < 10 ? '0' : '') + nextDay.getDate();
+
+        // Устанавливаем классы для сегодняшнего дня
+        if (i === todayIndex) {
+            week[i].classList.remove("day");
+            week[i].classList.add("active-day");
+            gettable(week[i].getElementsByTagName("h3")[0].innerHTML, week[i].getElementsByTagName("p")[0].innerHTML);
+
+        } else {
+            week[i].classList.remove("active-day");
+            week[i].classList.add("day");
+        }
+    }
+    modeenabled();
+}
       window.onload = onPageLoad;
       
       async function month_set(){
