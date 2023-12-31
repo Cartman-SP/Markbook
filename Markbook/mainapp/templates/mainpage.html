@@ -16,19 +16,83 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body onload="focusFirstInput()">
     <form action="" method="post" id="form">
       <div class="input-container">
         <h1>Введи свой код</h1>
         {% csrf_token %} {{ form.code }}
-        <input type="submit" value=">" id="submit" />
       </div>
-      {% for field, errors in form.errors.items %} {% for error in errors %}
-      <div class="error">
-        <p>Ошибка:</p>
-        {{ error }}
+      <div class="activity">
+        <button onclick="clearAllInputs()" id="form-clean">X</button>
+        
+        {% for field, errors in form.errors.items %} {% for error in errors %}
+        <div class="error">
+          <p>Ошибка:</p>
+          {{ error }}
+        </div>
+        {% endfor %} {% endfor %}
+
+        <button type="submit" value=">" id="submit" class="scroll-button"><span class="scroll-icon">&gt;</span></button>
       </div>
-      {% endfor %} {% endfor %}
+      
+      <!-- <p>Lit code: <span id="litCode"></span></p> -->
+
+      
     </form>
+
+    <script>
+      function moveToNext(input, nextInputId) {
+        const maxLength = parseInt(input.getAttribute('maxlength'));
+        const currentLength = input.value.length;
+  
+        if (currentLength >= maxLength && nextInputId) {
+          document.getElementById(`id_code_${nextInputId}`).focus();
+        }
+  
+        displayLitCode();
+      }
+  
+      function handlePaste(event) {
+        event.preventDefault();
+        const clipboardData = event.clipboardData || window.clipboardData;
+        const pastedText = clipboardData.getData('text');
+  
+        const digits = pastedText.split('').slice(0, 7);
+  
+        for (let i = 0; i < digits.length; i++) {
+          document.getElementById(`id_code_${i}`).value = digits[i];
+          if (i === digits.length - 1) {
+            displayLitCode();
+            break;
+          }
+        }
+      }
+  
+      function displayLitCode() {
+        let code = '';
+        for (let i = 0; i <= 5; i++) {
+          const digit = document.getElementById(`id_code_${i}`).value;
+          code += digit || '-';
+        }
+        document.getElementById('litCode').innerText = code;
+      }
+  
+      function focusFirstInput() {
+        document.getElementById('id_code_0').focus();
+      }
+
+      function focusFirstInput() {
+      document.getElementById('id_code_0').focus();
+      }
+
+      function clearAllInputs() {
+        for (let i = 0; i <= 5; i++) {
+          document.getElementById(`id_code_${i}`).value = '';
+        }
+        document.getElementById('litCode').innerText = '';
+        focusFirstInput(); // Set focus back to the first input after clearing
+      }
+
+    </script>
   </body>
 </html>
