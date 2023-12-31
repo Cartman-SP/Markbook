@@ -98,7 +98,7 @@
           <h1>Посещаемость</h1>
           <div class="user">
             <img src="{% static 'imgs/icon-calendar.png' %}" alt="">
-            <h3>Январь</h3>
+            <h3 id = "month">Январь</h3>
             <!-- <img
                 src="{% static 'imgs/icon-user.png' %}"
                 alt="user"
@@ -223,6 +223,7 @@
       }
 
       function onPageLoad() {
+        month_set()
         var c = 1
         for (let i = today.getDay(); i < 7; i++) {
           var h = week[i].getElementsByTagName("h4")[0];
@@ -259,7 +260,33 @@
         modeenabled();
       }
       window.onload = onPageLoad;
-
+      
+      async function month_set(){
+        console.log(await document.getElementById("Mon").getElementsByTagName("h3")[0].innerHTML) // не удалять сломается
+        a = document.getElementById("Mon").getElementsByTagName("h3")[0].innerHTML.split(".")[1];
+        b = document.getElementById("Sun").getElementsByTagName("h3")[0].innerHTML.split(".")[1];
+        d = document.getElementById("month");
+        months = {
+          "1":"Январь",
+          "2":"Февраль",
+          "3":"Март",
+          "4":"Апрель",
+          "5":"Май",
+          "6":"Июнь",
+          "7":"Июль",
+          "8":"Август",
+          "9":"Сентябрь",
+          "10":"Октябрь",
+          "11":"Ноябрь",
+          "12":"Декабрь",
+        };
+        console.log(a);
+        if(a!=b){
+          d.innerHTML = months[a] + "-" + months[b];
+        }else{
+          d.innerHTML = months[a];
+        }
+      }
       function gettable(dater,dayer) {
         var xmlhttp = new XMLHttpRequest();
         var theUrl = "get_table/";
