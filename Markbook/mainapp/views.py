@@ -76,6 +76,31 @@ def adminstatistic(request):
     context['theme'] = request.session["theme"]
     return render(request,'adminstatistic.html',context)
 
+def adminstat(request):
+    context={}
+    students = Student.objects.filter()
+    lessons = Lesson.objects.filter()
+    sub = {}
+    today = datetime.today().strftime('%d.%m.%Y')
+    for j in lessons:
+        sub[j.name] = {}
+        
+        for i in students:
+            sub[j.name][i.secondname+" "+i.firstname[0]+"."] = {}
+            sub[j.name][i.secondname+" "+i.firstname[0]+"."]['all'] = 0
+            sub[j.name][i.secondname+" "+i.firstname[0]+"."]['on'] = 0
+            sub[j.name][i.secondname+" "+i.firstname[0]+"."]['noton'] = 0
+    print(sub)
+    for i in range(len(lessons)):
+        for x in students:
+            sub[lessons[i].name][x.secondname+" "+x.firstname[0]+"."]['all'] += difference(lessons[i].start_time,lessons[i].end_time)//7+1
+            sub[lessons[i].name][x.secondname+" "+x.firstname[0]+"."]['on'] += len(Check.objects.filter(student = x, lesson = lessons[i], ison=1))
+            if(difference(today,lessons[i].end_time)>0):
+                sub[lessons[i].name][x.secondname+" "+x.firstname[0]+"."]['noton'] += difference(lessons[i].start_time,today)//7+1 - sub[lessons[i].name][x.secondname+" "+x.firstname[0]+"."]['on']
+            else: #закончились
+                sub[lessons[i].name][x.secondname+" "+x.firstname[0]+"."]['noton'] += difference(lessons[i].start_time,lessons[i].end_time)//7+1 - len(Check.objects.filter(student = x, lesson = lessons[i], ison=1))
+    return HttpResponse(json.dumps(sub, ensure_ascii=False),content_type="application/json")
+
 def statistics(request):
     if request.session.get("student_id") is not None:
         student = Student.objects.get(id=request.session.get('student_id'))

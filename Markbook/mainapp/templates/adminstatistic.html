@@ -114,34 +114,55 @@
         </div>
 
         <div class="lessons-content">
-          <div class="lesson">
-            <div class="naming">
-              <p>Предмет</p>
-              <h4>Программирование</h4>
-            </div>
-            <div class="student">
-              <h4>Аль-Агабани Н.</h4>
-              <div class="visiting">
-                <h4>Пропущено</h4>
-                <p style="color: red;" id="missed">5</p>
-                <h4>Посещений</h4>
-                <p style="color: green;" id="visits">0</p>
-              </div>
-            </div>
-            <div class="student">
-              <h4>Никифоров А.</h4>
-              <div class="visiting">
-                <h4>Пропущено</h4>
-                <p style="color: red;" id="missed">89</p>
-                <h4>Посещений</h4>
-                <p style="color: green;" id="visits">5</p>
-              </div>
-            </div>
-          </div>
-        </div>
+
         </div>
         
     </div>
+
+    <script>
+      var CSRF_TOKEN = "{{ csrf_token }}";
+      function PageLoad(){
+        //father = document.getElementsById();
+        var xmlhttp = new XMLHttpRequest();
+        var theUrl = "/adminstat/";
+        xmlhttp.onload = function () {
+            if (xmlhttp.status == 200) {
+              var responseText = xmlhttp.responseText;
+              var context = JSON.parse(responseText);
+              console.log(context)
+              for(var i in context){
+              var div = document.createElement("div");
+              div.classList.add("lesson")
+                div.innerHTML = `
+                  <div class="naming">
+                    <p>Предмет</p>
+                    <h4>${i}</h4>
+                  </div>
+              `
+                for(var j in context[i]){
+                  div.innerHTML+=`
+                    <div class="student">
+                      <h4>${j}</h4>
+                      <div class="visiting">
+                        <h4>Пропущено</h4>
+                        <p style="color: red;" id="missed">${context[i][j].noton}</p>
+                        <h4>Посещений</h4>
+                        <p style="color: green;" id="visits">${context[i][j].on}</p>
+                      </div>
+                    </div>
+                    `;
+                }
+              document.getElementsByClassName("lessons-content")[0].appendChild(div);
+              }
+            }
+        }
+        xmlhttp.open("POST", theUrl, (async = true));
+        xmlhttp.setRequestHeader("X-CSRFToken", CSRF_TOKEN);
+        xmlhttp.send(JSON.stringify({ }));
+      }
+
+      window.onload = PageLoad;
+    </script>
 
     <script>
       var CSRF_TOKEN = "{{ csrf_token }}";

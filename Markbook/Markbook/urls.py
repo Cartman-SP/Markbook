@@ -23,7 +23,8 @@ urlpatterns = [
     path('statistics/',statistics,name='statistics'),
     path('statistics/leave/',leave,name='leave'),
     path('adminstatistics/leave/',leave,name='leave'),
-    path('statistic/',statistic,name="statistic")
+    path('statistic/',statistic,name="statistic"),
+    path("adminstat/", adminstat , name = "adminstat"),
 
 
 ]
