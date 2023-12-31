@@ -148,7 +148,7 @@
               <button id="add" onclick="add()">
                 Подтвердить и Добавить
               </button>
-              <button id="clean">
+              <button id="clean" onclick="delete_input()">
                 Очистить форму
               </button>
             </div>
@@ -156,7 +156,7 @@
           <div class="header">
             <h1>Существующие предметы</h1>
 
-            <span id="tag-counter">{{ lessons }} Предметов</span>
+            <span id="tag-counter">{{ ammount }} Предметов</span>
             
           </div>
           <div class="card">
@@ -193,6 +193,17 @@
       function reverse_data(a){
         a = a.split('.');
         return a[2]+"."+a[1]+'.'+a[0];
+      }
+
+      function delete_input(){
+        arr = document.getElementsByTagName("input")
+        for(var i in arr){
+          arr[i].value=""
+        }
+        arr2 = document.getElementsByTagName("select")
+        for(var i in arr2){
+          arr2[i].value = ""
+        }
       }
       function add(){
         name = document.getElementById("name_field").value;

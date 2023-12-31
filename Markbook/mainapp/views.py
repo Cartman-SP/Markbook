@@ -168,6 +168,7 @@ def add_page(request):
     lessons = Lesson.objects.filter()
     context['theme'] = request.session["theme"]
     context['lessons'] = lessons
+    context['ammount'] = len(lessons)
     return render(request,"AddTimetable.html",context)
 
 
