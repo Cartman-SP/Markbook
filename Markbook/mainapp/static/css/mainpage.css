@@ -9,14 +9,27 @@ body {
 
 .input-container {
   text-align: center;
+  align-content: center;
+  padding: 2vw 0 2vw 0;
 }
 
 h1 {
   font-family: "Montserrat";
-  font-size: 3vw;
+  font-size: 2vw;
+  margin: 0;
+}
+
+p{
+  font-family: "Montserrat";
+  font-size: 1vw;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3vw;
 }
 
 input {
+  background-color: #f4f4f4;
   text-align: center;
   font-family: "Montserrat";
   padding: 1vh 1vw 1vh 1vw;
@@ -30,16 +43,19 @@ input {
 
 #form {
   display: block;
-  justify-content: space-between;
   align-items: center;
+  background-color: white;
+  padding: 1vh 2vw 1vh 2vw;
+  border-radius: .7vw;
+  filter: drop-shadow(0 0 10px rgb(223, 223, 223));
 }
 
 .activity{
-  margin-top: 1vw;
+  margin-top: 3vw;
   background-color: transparent;
-  display: flex;
+  display: block;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .activity button{
@@ -47,21 +63,25 @@ input {
   padding: 0.2vw;
   font-family: "Montserrat";
   font-size: 1vw;
-  width: 2vw;
-  height: 2vw;
+  font-weight: bold;
+  width: 12vw;
+  height: 3vw;
   border: none;
   border-radius: 7vw;
-  background-color: white;
+  color: white;
+  background-color: #7A4BFF;
   transition: all .2s;
 }
 
 #form-clean{
   color: red;
+  width: 3vw;
+  background-color: white;
 }
 
 .activity button:hover {
   cursor: pointer;
-  filter: drop-shadow(0 0 10px rgb(226, 226, 226));
+  filter: brightness(80%);
 }
 
 .error{
@@ -77,6 +97,7 @@ input {
 .error p{
   margin: 0;
   margin-right: 10px;
+  width: auto;
 }
 
 

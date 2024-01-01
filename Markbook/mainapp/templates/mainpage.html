@@ -20,20 +20,24 @@
     <form action="" method="post" id="form">
       <div class="input-container">
         <h1>Введи свой код</h1>
+        <p>Если у тебя нет кода для входа в систему, то попроси его у старосты твоей группы</p>
         {% csrf_token %} {{ form.code }}
-      </div>
-      <div class="activity">
-        <button onclick="clearAllInputs()" id="form-clean">X</button>
-        
-        {% for field, errors in form.errors.items %} {% for error in errors %}
-        <div class="error">
-          <p>Ошибка:</p>
-          {{ error }}
-        </div>
-        {% endfor %} {% endfor %}
 
-        <button type="submit" value=">" id="submit" class="scroll-button"><span class="scroll-icon">&gt;</span></button>
+        {% for field, errors in form.errors.items %} {% for error in errors %}
+          <div class="error">
+            <p>Ошибка:</p>
+            {{ error }}
+          </div>
+          {% endfor %} {% endfor %}
+
+        <div class="activity">
+
+          <button type="submit" value=">" id="submit" class="scroll-button"><span class="scroll-icon">Войти</span></button>
+
+          <button onclick="clearAllInputs()" id="form-clean">х</button>
+        </div>
       </div>
+      
       
       <!-- <p>Lit code: <span id="litCode"></span></p> -->
 
