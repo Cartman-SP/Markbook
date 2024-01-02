@@ -103,7 +103,7 @@ input {
 
 @media (max-width: 1000px){
   body {
-    background-color: #f4f4f4;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,20 +113,33 @@ input {
   
   .input-container {
     text-align: center;
+    align-content: center;
+    padding: 1vw 0 1vw 0;
   }
   
   h1 {
     font-family: "Montserrat";
     font-size: 10vw;
+    margin: 0;
+  }
+  
+  p{
+    font-family: "Montserrat";
+    font-size: 3vw;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3vw;
   }
   
   input {
+    background-color: #f4f4f4;
     text-align: center;
     font-family: "Montserrat";
     padding: 1vh 1vw 1vh 1vw;
     width: 8vw;
     height: 12vw;
-    font-size: 10vw;
+    font-size: 8vw;
     border-radius: 3vw;
     border: none;
     margin-left: 5px;
@@ -134,44 +147,51 @@ input {
   
   #form {
     display: block;
-    justify-content: space-between;
     align-items: center;
+    background-color: white;
+    padding: 1vh 2vw 1vh 2vw;
+    border-radius: .7vw;
+    filter: drop-shadow(0 0 0px rgb(223, 223, 223));
   }
   
   .activity{
-    margin-top: 5vw;
+    margin-top: 3vw;
     background-color: transparent;
-    display: flex;
+    display: block;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
   }
   
   .activity button{
     align-items: center;
-    padding: 1vw;
+    padding: 0.2vw;
     font-family: "Montserrat";
-    font-size: 6vw;
-    width: 10vw;
-    height: 10vw;
+    font-size: 4vw;
+    font-weight: bold;
+    width: 30vw;
+    height: 8vw;
     border: none;
     border-radius: 7vw;
-    background-color: white;
+    color: white;
+    background-color: #7A4BFF;
     transition: all .2s;
   }
   
   #form-clean{
     color: red;
+    width: 8vw;
+    background-color: rgb(235, 235, 235);
   }
   
   .activity button:hover {
     cursor: pointer;
-    filter: drop-shadow(0 0 10px rgb(226, 226, 226));
+    filter: brightness(80%);
   }
   
   .error{
     height: 2vw;
     font-family: "Montserrat";
-    font-size: 4vw;
+    font-size: 1vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,5 +201,6 @@ input {
   .error p{
     margin: 0;
     margin-right: 10px;
+    width: auto;
   }
 }
