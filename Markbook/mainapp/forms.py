@@ -4,12 +4,12 @@ from django.forms.widgets import MultiWidget, TextInput
 class SixDigitCodeWidget(MultiWidget):
     def __init__(self, attrs=None):
         widgets = [
-            TextInput(attrs={'maxlength': '1', 'oninput': 'moveToNext(this, 1)', 'onpaste': 'handlePaste(event)', 'id': 'digit1'}),
-            TextInput(attrs={'maxlength': '1', 'oninput': 'moveToNext(this, 2)', 'id': 'digit2'}),
-            TextInput(attrs={'maxlength': '1', 'oninput': 'moveToNext(this, 3)', 'id': 'digit3'}),
-            TextInput(attrs={'maxlength': '1', 'oninput': 'moveToNext(this, 4)', 'id': 'digit4'}),
-            TextInput(attrs={'maxlength': '1', 'oninput': 'moveToNext(this, 5)', 'id': 'digit5'}),
-            TextInput(attrs={'maxlength': '1', 'oninput': 'moveToNext(this, null)', 'id': 'digit6'}),
+            TextInput(attrs={'maxlength': '1', "type":"number", "min":"0","max":"9",'oninput': 'moveToNext(this, 1)', 'onpaste': 'handlePaste(event)', 'id': 'digit1'}),
+            TextInput(attrs={'maxlength': '1', "type":"number", "min":"0","max":"9",'oninput': 'moveToNext(this, 2)', "onkeydown":"handleKeyDown(event, 1)",'id': 'digit2'}),
+            TextInput(attrs={'maxlength': '1', "type":"number", "min":"0","max":"9",'oninput': 'moveToNext(this, 3)', "onkeydown":"handleKeyDown(event, 2)",'id': 'digit3'}),
+            TextInput(attrs={'maxlength': '1', "type":"number", "min":"0","max":"9",'oninput': 'moveToNext(this, 4)', "onkeydown":"handleKeyDown(event, 3)",'id': 'digit4'}),
+            TextInput(attrs={'maxlength': '1', "type":"number", "min":"0","max":"9",'oninput': 'moveToNext(this, 5)', "onkeydown":"handleKeyDown(event, 4)",'id': 'digit5'}),
+            TextInput(attrs={'maxlength': '1', "type":"number", "min":"0","max":"9",'oninput': 'moveToNext(this, 6)', "onkeydown":"handleKeyDown(event, 5)", 'id': 'digit6'}),
         ]
         super().__init__(widgets, attrs=attrs)
 

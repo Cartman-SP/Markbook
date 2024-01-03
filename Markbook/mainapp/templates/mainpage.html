@@ -25,8 +25,7 @@
 
         {% for field, errors in form.errors.items %} {% for error in errors %}
           <div class="error">
-            <p>Ошибка:</p>
-            {{ error }}
+            <p>Ошибка: {{ error }}</p>
           </div>
           {% endfor %} {% endfor %}
 
@@ -44,21 +43,21 @@
       function moveToNext(input, nextInputId) {
         const maxLength = parseInt(input.getAttribute('maxlength'));
         const currentLength = input.value.length;
-  
+    
         if (currentLength >= maxLength && nextInputId) {
           document.getElementById(`id_code_${nextInputId}`).focus();
         }
-  
+    
         displayLitCode();
       }
-  
+    
       function handlePaste(event) {
         event.preventDefault();
         const clipboardData = event.clipboardData || window.clipboardData;
         const pastedText = clipboardData.getData('text');
-  
+    
         const digits = pastedText.split('').slice(0, 7);
-  
+    
         for (let i = 0; i < digits.length; i++) {
           document.getElementById(`id_code_${i}`).value = digits[i];
           if (i === digits.length - 1) {
@@ -67,7 +66,21 @@
           }
         }
       }
-  
+    
+      function handleKeyDown(event, currentInputId) {
+        if (event.key === 'Backspace' && currentInputId > 0) {
+          const currentInput = document.getElementById(`id_code_${currentInputId}`);
+          const previousInputId = currentInputId - 1;
+          const previousInput = document.getElementById(`id_code_${previousInputId}`);
+    
+          if (currentInput.value === '') {
+            event.preventDefault(); // Prevent the browser's default backspace behavior
+            previousInput.focus();
+            previousInput.value = ''; // Make the content of the previous input empty
+          }
+        }
+      }
+    
       function displayLitCode() {
         let code = '';
         for (let i = 0; i <= 5; i++) {
@@ -76,15 +89,11 @@
         }
         document.getElementById('litCode').innerText = code;
       }
-  
+    
       function focusFirstInput() {
         document.getElementById('id_code_0').focus();
       }
-
-      function focusFirstInput() {
-      document.getElementById('id_code_0').focus();
-      }
-
+    
       function clearAllInputs() {
         for (let i = 0; i <= 5; i++) {
           document.getElementById(`id_code_${i}`).value = '';
@@ -92,7 +101,8 @@
         document.getElementById('litCode').innerText = '';
         focusFirstInput(); // Set focus back to the first input after clearing
       }
-
     </script>
+    
+    
   </body>
 </html>
